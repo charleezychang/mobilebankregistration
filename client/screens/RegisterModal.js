@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
 
-const HomeScreen = () => {
+const RegisterModal = () => {
     const navigation = useNavigation()
 
     return (
@@ -39,4 +39,4 @@ const HomeScreen = () => {
     )
 }
 
-export default HomeScreen
+export default RegisterModal
