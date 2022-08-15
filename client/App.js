@@ -8,6 +8,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import HomeScreen from './screens/HomeScreen';
 import RegisterModal from './screens/RegisterModal';
 import LoginModal from './screens/LoginModal';
+import NoConnectionModal from './screens/NoConnectionScreen';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -34,6 +35,7 @@ export default function App() {
             <Stack.Group screenOptions={{ presentation: 'modal' }}>
               <Stack.Screen name="LoginModal" component={LoginModal} />
               <Stack.Screen name="RegisterModal" component={RegisterModal} />
+              <Stack.Screen name="NoConnectionModal" component={NoConnectionModal} />
             </Stack.Group>
           </Stack.Navigator>
         </TailwindProvider>
