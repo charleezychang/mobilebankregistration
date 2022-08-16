@@ -9,7 +9,7 @@ const OtpModal = () => {
   const navigation = useNavigation()
   const [pinCode, setPinCode] = useState([])
 
-  let myPincode = [2,3,4,1]
+  let myPincode = [2, 3, 4, 1]
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener(state => {
@@ -25,14 +25,17 @@ const OtpModal = () => {
   }, [pinCode])
 
   const verifyOtp = () => {
-    if (pinCode.toString()===myPincode.toString()) {
-      // get JWT and
+    if (pinCode.toString() === myPincode.toString()) {
+      // get JWT and:
       navigation.navigate('Home', {
         isLoggedIn: true
       })
     }
-    else {
+    else if (pinCode.length == 4 && pinCode.toString() !== myPincode.toString()) {
+      // modal
+      showAlert()
 
+      // setIsValidPinCode(false)
     }
   }
 
@@ -42,7 +45,7 @@ const OtpModal = () => {
     }
     // check if pincode is maxed
     if (pinCode.length + 1 == 4) {
-      
+
     }
   }
 
@@ -50,6 +53,25 @@ const OtpModal = () => {
     if (pinCode.length != 0) {
       setPinCode((previousArr) => (previousArr.slice(0, -1)));
     }
+  }
+
+  const showAlert = () => {
+    Alert.alert(
+      "The pin entered is incorrect.",
+      "Enter the corect pin to avoid reaching the three allowed login attempts.",
+      [
+        {
+          text: "Ok",
+          onPress: () => {
+            deleteNumberFromPin()
+            deleteNumberFromPin()
+            deleteNumberFromPin()
+            deleteNumberFromPin()
+          },
+          style: "cancel",
+        },
+      ]
+    )
   }
 
   return (
