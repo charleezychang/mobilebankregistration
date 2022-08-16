@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native';
 import InitialView from '../components/InitialView';
-import HomeView from '../components/HomeView';
+import MainView from '../components/MainView';
 import { useIsFocused } from '@react-navigation/native';
 
 const HomeScreen = () => {
@@ -22,7 +22,7 @@ const HomeScreen = () => {
 
     return (
         <SafeAreaView className='flex-1 bg-[#121212]'>
-            {isLoggedIn ? <HomeView /> : <InitialView />}
+            {isLoggedIn ? <MainView /> : <InitialView />}
         </SafeAreaView>
     )
 }

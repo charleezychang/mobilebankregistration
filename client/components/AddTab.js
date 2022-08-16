@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const HomeView = () => {
+const AddTab = () => {
   return (
     <View>
-      <Text>HomeView</Text>
+      <Text>AddTab</Text>
     </View>
   )
 }
 
-export default HomeView
+export default AddTab
