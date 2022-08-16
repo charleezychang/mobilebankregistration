@@ -11,6 +11,7 @@ const InitialView = () => {
             <StatusBar barStyle="light-content" backgroundColor="#121212" />
             {/* Company Logo */}
             <View className='h-[40%] flex-row justify-center items-end'>
+                <Text className='text-white text-xl'>Register</Text>
                 <Image source={require('../assets/splash.png')} className='h-[40%] mb-4' resizeMode='contain' />
             </View>
             {/* Prompt to Login or Register */}
@@ -28,7 +29,7 @@ const InitialView = () => {
                     </Pressable>
                     <Pressable
                         onPress={() => {
-                            navigation.navigate('RegisterModal')
+                            navigation.navigate('RegistrationModal')
                         }}
                         className='mt-2 bg-[#121212] w-[100%] p-3 rounded-xl flex-row justify-center items-center'>
                         <Text className='text-white text-xl'>Register</Text>
