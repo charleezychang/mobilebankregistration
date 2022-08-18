@@ -1,7 +1,6 @@
 import { View, Text, Image, StyleSheet } from 'react-native'
 import Dot from './carouselDot'
 import { LinearGradient } from 'expo-linear-gradient';
-import MaskedView from '@react-native-masked-view/masked-view'
 
 const customButton = (props) => {
     const monthlyLimitAchieved = (props.min / props.max * 100)
@@ -16,11 +15,7 @@ const customButton = (props) => {
         <View className="w-[62.66%] mx-[2%] my-[4%] flex-column items-center relative">
             <View className="bg-[#484848] rounded-xl w-[100%] relative flex-column items-center overflow-hidden">
                 <View className="py-3 flex-row justify-between">
-                    <MaskedView style={{width: "50%", height: "100%"}} maskElement={<Text className="text-xl font-bold">₱ {props.min}</Text>}>
-                        <LinearGradient colors={['#FFD60A', '#32D74B']} style={{width: "100%", height: "100%", position:"absolute"}} start={[0, 0]} end={[1, 1]}>
-                        </LinearGradient>
-                    </MaskedView>
-    
+                    <Text className="text-white text-xl font-bold">₱ {props.min}</Text>
                     <Text className="text-white text-xl font-bold">₱ {props.max}</Text>
                 </View>
                 <View style={[styles.bar, monthlyLimitBar]}>
