@@ -8,7 +8,7 @@ import CheckBox from 'expo-checkbox';
 
 const LoginModal = () => {
     const [rememberMe, setRememberMe] = useState(null)
-    const [isValidEmail, setisValidEmail] = useState(true)
+    const [isValidEmail, setIsValidEmail] = useState(true)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isValidCredentials, setIsValidCredentials] = useState(true)
@@ -54,7 +54,7 @@ const LoginModal = () => {
     }, [])
 
     const verifyLogin = () => {
-        setisValidEmail(true)
+        setIsValidEmail(true)
         if (myAccount.email == email && myAccount.password == password) {
             setIsValidCredentials(true)
             navigation.navigate('OtpModal')
@@ -74,10 +74,10 @@ const LoginModal = () => {
 
     const emailValidation = (email) => {
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-            setisValidEmail(true)
+            setIsValidEmail(true)
         }
         else {
-            setisValidEmail(false)
+            setIsValidEmail(false)
         }
     }
 
@@ -149,7 +149,6 @@ const LoginModal = () => {
 
                     <Pressable
                         onPress={() => {
-                            // Alert.alert(rememberMe.toString())
                             verifyLogin()
                         }}
                         className='mt-4 bg-[#121212] w-[100%] p-3 rounded-xl flex-row justify-center items-center'>
@@ -158,7 +157,7 @@ const LoginModal = () => {
                 </View>
                 <View className='self-center flex-row mt-4'>
                     <Text className='text-white'>Don't have an account? </Text>
-                    <Pressable ><Text className='text-green-600'>Sign-up! </Text></Pressable>
+                    <Pressable onPress={() => navigation.navigate('RegistrationModal')}><Text className='text-green-600'>Sign-up! </Text></Pressable>
                 </View>
             </View>
         </SafeAreaView>

@@ -7,6 +7,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import HomeScreen from './screens/HomeScreen';
 import RegistrationModal from './screens/RegistrationModal';
+import SuccessRegModal from './screens/SuccessRegModal'
 import LoginModal from './screens/LoginModal';
 import NoConnectionScreen from './screens/NoConnectionScreen';
 import OtpModal from './screens/OtpModal';
@@ -37,6 +38,7 @@ export default function App() {
             <Stack.Group screenOptions={{ presentation: 'modal' }}>
               <Stack.Screen name="LoginModal" component={LoginModal} />
               <Stack.Screen name="RegistrationModal" component={RegistrationModal} />
+              <Stack.Screen name="SuccessRegModal" component={SuccessRegModal} />
               <Stack.Screen name="OtpModal" component={OtpModal} />
             </Stack.Group>
           </Stack.Navigator>

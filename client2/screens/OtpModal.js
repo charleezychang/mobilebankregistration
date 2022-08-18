@@ -61,7 +61,7 @@ const OtpModal = () => {
       "Enter the corect pin to avoid reaching the three allowed login attempts.",
       [
         {
-          text: "Ok",
+          text: "Okay",
           onPress: () => {
             deleteNumberFromPin()
             deleteNumberFromPin()

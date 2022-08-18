@@ -3,11 +3,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
 
-const RegisterModal = () => {
+const InitialView = () => {
     const navigation = useNavigation()
 
     return (
-        <SafeAreaView className='flex-1 bg-[#121212]'>
+        <View className='flex-1 bg-[#121212]'>
             <StatusBar barStyle="light-content" backgroundColor="#121212" />
             {/* Company Logo */}
             <View className='h-[40%] flex-row justify-center items-end'>
@@ -28,15 +28,15 @@ const RegisterModal = () => {
                     </Pressable>
                     <Pressable
                         onPress={() => {
-                            navigation.navigate('RegisterModal')
+                            navigation.navigate('RegistrationModal')
                         }}
                         className='mt-2 bg-[#121212] w-[100%] p-3 rounded-xl flex-row justify-center items-center'>
                         <Text className='text-white text-xl'>Register</Text>
                     </Pressable>
                 </View>
             </View>
-        </SafeAreaView>
+        </View>
     )
 }
 
-export default RegisterModal
+export default InitialView
