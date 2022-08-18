@@ -17,6 +17,7 @@ const InitialView = () => {
             <View className='h-[60%]'>
                 <View className='m-10 p-5 bg-white rounded-2xl flex-column items-center'>
                     <Text className='text-2xl font-bold'>Welcome to</Text>
+                    <Text>Hello</Text>
                     <Text className='text-2xl font-bold'>Mobile Banking App</Text>
                     <Text className='text-md pt-2 text-center'>Deliver your order around the world without hesitation</Text>
                     <Pressable
