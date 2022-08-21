@@ -14,7 +14,7 @@ const customButton = (props) => {
     return (
         <View className="w-[62.66%] mx-[2%] my-[4%] flex-column items-center relative">
             <View className="bg-[#484848] rounded-xl w-[100%] relative flex-column items-center overflow-hidden">
-                <View className="py-3 flex-row justify-between">
+                <View className="py-3 flex-row justify-between w-[80%]">
                     <Text className="text-white text-xl font-bold">₱ {props.min}</Text>
                     <Text className="text-white text-xl font-bold">₱ {props.max}</Text>
                 </View>

@@ -26,7 +26,7 @@ const NoConnectionScreen = () => {
     }
 
     return (
-        <SafeAreaView className='flex-1 bg-[#121212] flex-column justify-center items-center'>
+        <SafeAreaView className='flex-1 bg-black flex-column justify-center items-center'>
             <StatusOfflineIcon fill="white" size={70} />
             <Text className='text-white text-2xl mt-2'>No internet connection.</Text>
             <Pressable onPress={handleRefresh} className='bg-white rounded-md py-1 px-5 mt-4'>

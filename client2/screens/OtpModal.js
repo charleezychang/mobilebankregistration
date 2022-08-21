@@ -75,8 +75,8 @@ const OtpModal = () => {
   }
 
   return (
-    <SafeAreaView className='flex-1 bg-[#121212]'>
-      <StatusBar barStyle="light-content" backgroundColor="#121212" />
+    <SafeAreaView className='flex-1 bg-black'>
+      <StatusBar barStyle="light-content" backgroundColor="black" />
       {/* Lock Logo */}
       <View className='h-[25%] flex-row justify-center items-end'>
         <LockClosedIcon fill="white" size={70} />

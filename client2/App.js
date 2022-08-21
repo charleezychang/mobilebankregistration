@@ -34,8 +34,6 @@ export default function App() {
             <Stack.Group>
               <Stack.Screen name="Home" component={HomeScreen} />
               <Stack.Screen name="NoConnection" component={NoConnectionScreen} />
-            </Stack.Group>
-            <Stack.Group screenOptions={{ presentation: 'modal' }}>
               <Stack.Screen name="LoginModal" component={LoginModal} />
               <Stack.Screen name="RegistrationModal" component={RegistrationModal} />
               <Stack.Screen name="SuccessRegModal" component={SuccessRegModal} />

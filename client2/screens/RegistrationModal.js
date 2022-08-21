@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, Image, Pressable, TextInput, Alert, Switch } from 'react-native'
+import { View, Text, StatusBar, Image, Pressable, TextInput, Alert, Switch, Platform } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
@@ -190,15 +190,15 @@ const RegistrationModal = () => {
       }
 
     return (
-        <SafeAreaView className='flex-1 bg-[#121212]'>
-            <StatusBar barStyle="light-content" backgroundColor="#121212" />
+        <SafeAreaView className={`flex-1 bg-black flex-column items-center`}>
+            <StatusBar barStyle="light-content" backgroundColor="black" />
             {/* Company Logo */}
             <View className='h-[20%] flex-row justify-center items-end'>
                 <NewspaperIcon fill="white" size={70} />
             </View>
             {/* Prompt to Login or Register */}
-            <View className='h-[80%] flex-column '>
-                <View className='mt-10 ml-10 mr-10 p-5 bg-white rounded-2xl flex-column items-center'>
+            <View className={`h-[80%] flex-column ${Platform.OS === 'web' && 'w-[30%]'}`}>
+                <View className={`mt-10 ml-10 mr-10 p-5 bg-white rounded-2xl flex-column items-center`}>
                     <TextInput
                         placeholder='Full Name'
                         className={`text-xl w-[100%] p-1 border-b-2 ${!isValidFullName && 'border-b-red-500'}`}
@@ -243,7 +243,7 @@ const RegistrationModal = () => {
 
                     {/* {!isValidCredentials && <TextInput className='self-start text-red-500'>Invalid email address or password</TextInput>} */}
                     <View className='flex-row items-center w-[100%] justify-between mt-4'>
-                        <View className='flex-row items-center'>
+                        <View className='flex-row'>
                             <CheckBox
                                 // disabled={false}
                                 value={toggleTos}
@@ -251,7 +251,7 @@ const RegistrationModal = () => {
                                     { setToggleTos(!toggleTos) }
                                 }}
                             />
-                            <Text className='ml-2 mr-5'>By creating an account, you agree to our Terms of Service and Privacy Policy</Text>
+                            <Text className={`ml-2 mr-5 `}>By creating an account, you agree to our Terms of Service and Privacy Policy</Text>
                         </View>
                     </View>
 
@@ -260,7 +260,7 @@ const RegistrationModal = () => {
                             // // Alert.alert(rememberMe.toString())
                             completeSignUp()
                         }}
-                        className='mt-4 bg-[#121212] w-[100%] p-3 rounded-xl flex-row justify-center items-center'>
+                        className='mt-4 bg-black w-[100%] p-3 rounded-xl flex-row justify-center items-center'>
                         <Text className='text-white text-xl font-bold'>SIGN UP</Text>
                     </Pressable>
                 </View>

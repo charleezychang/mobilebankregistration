@@ -22,8 +22,8 @@ const SuccessRegModal = () => {
   }, [])
 
   return (
-    <SafeAreaView className='flex-1 bg-[#121212]'>
-      <StatusBar barStyle="light-content" backgroundColor="#121212" />
+    <SafeAreaView className='flex-1 bg-black'>
+      <StatusBar barStyle="light-content" backgroundColor="black" />
       <View className='h-[30%] flex-row justify-center items-end'>
         <ShieldCheckIcon fill="white" size={70} />
       </View>
@@ -37,7 +37,7 @@ const SuccessRegModal = () => {
             onPress={() => {
               navigation.navigate('LoginModal')
             }}
-            className='mt-4 bg-[#121212] w-[100%] p-3 rounded-xl flex-row justify-center items-center'>
+            className='mt-4 bg-black w-[100%] p-3 rounded-xl flex-row justify-center items-center'>
             <Text className='text-white text-xl font-bold'>SIGN IN</Text>
           </Pressable>
         </View>
