@@ -1,27 +1,31 @@
-import { View, Text, StatusBar, Image, Pressable, TextInput, Alert, Switch, Platform } from 'react-native'
+import { View, Text, StatusBar, Image, Pressable, TextInput, Alert, Switch, Platform, ScrollView, KeyboardAvoidingView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import NetInfo from "@react-native-community/netinfo";
-import CheckBox from 'expo-checkbox';
 import { NewspaperIcon } from "react-native-heroicons/solid";
+import BlurCirclesBg from '../components/BlurCirclesBg'
+import ProgressBar from '../components/ProgressBar';
+import StepOne from '../components/RegistrationSteps/StepOne';
+import StepTwo from '../components/RegistrationSteps/StepTwo';
+import useDebounce from '../hooks/useDebounce';
 
-const RegistrationModal = () => {
-    const [toggleTos, setToggleTos] = useState(false)
-
+const RegistrationModal = (props) => {
     const [fullName, setFullName] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
-    const [email, setEmail] = useState('')
+    
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const [isValidFullName, setIsValidFullName] = useState(true)
-    const [isValidEmail, setIsValidEmail] = useState(true)
+    
     const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(true)
     const [isValidPassword, setIsValidPassword] = useState(true)
     const [isValidConfirmPassword, setIsValidConfirmPassword] = useState(true)
     const [passwordCheckLength, setPasswordCheckLength] = useState(false)
     const [passwordCheckCharacter, setPasswordCheckCharacter] = useState(false)
+
+    const [registrationStep, setRegistrationStep] = useState(0)
 
     const navigation = useNavigation()
 
@@ -38,7 +42,7 @@ const RegistrationModal = () => {
         }
     }, [])
 
-    const checkForm = debounce((param, value) => {
+    const checkForm = useDebounce((param, value) => {
         switch (param) {
             case 'name':
                 if (value == '') {
@@ -68,20 +72,20 @@ const RegistrationModal = () => {
                     setIsValidPhoneNumber(false)
                 }
                 break;
-            case 'email':
-                if (value == '') {
-                    setEmail('')
-                    setIsValidEmail(false)
-                }
-                else if (value && /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})$/.test(value)) {
-                    setEmail(value)
-                    setIsValidEmail(true)
-                }
-                else {
-                    setEmail(value)
-                    setIsValidEmail(false)
-                }
-                break;
+            // case 'email':
+            //     if (value == '') {
+            //         setEmail('')
+            //         setIsValidEmail(false)
+            //     }
+            //     else if (value && /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})$/.test(value)) {
+            //         setEmail(value)
+            //         setIsValidEmail(true)
+            //     }
+            //     else {
+            //         setEmail(value)
+            //         setIsValidEmail(false)
+            //     }
+            //     break;
             case 'password':
                 if (value == '') {
                     setPassword('')
@@ -139,67 +143,76 @@ const RegistrationModal = () => {
         }
     }
 
-    function debounce(cb, delay = 1500) {
-        let timeout
-        return (...args) => {
-            clearTimeout(timeout)
-            timeout = setTimeout(() => {
-                cb(...args)
-            }, delay)
-        }
+    
+
+    const stepUpRegistration = () => {
+        setRegistrationStep(prevState => prevState + 1)
+        // switch (registrationStep) {
+        //     case 0:
+        //         if (!toggleTos) {
+        //             useAlert({
+        //                 title: "Terms and Conditions",
+        //                 message: "You must agree to the Terms of Service and Privacy Policy.",
+        //                 button: "Okay"
+        //             })
+        //         }
+        //         else {
+        //             setRegistrationStep(prevState => prevState + 1)
+        //         }
+        //         break;
+        //     case 1:
+        //         if (email == '') {
+        //             setIsValidEmail(false)
+        //         }
+        //         break;
+        //     default:
+        //         break;
+        // }
+
+        // if (isValidConfirmPassword && isValidEmail && isValidFullName && isValidPhoneNumber && isValidPassword && toggleTos) {
+        //     navigation.navigate('SuccessRegModal')
+        // }
+        // if (fullName == '') {
+        //     setIsValidFullName(false)
+        // }
+        // if (phoneNumber == '') {
+        //     setIsValidPhoneNumber(false)
+        // }
+
+        // if (password == '') {
+        //     setIsValidPassword(false)
+        // }
+        // if (confirmPassword == '') {
+        //     setIsValidConfirmPassword(false)
+        // }
+
+
     }
 
-    const completeSignUp = () => {
-        if (isValidConfirmPassword && isValidEmail && isValidFullName && isValidPhoneNumber && isValidPassword && toggleTos) {
-            navigation.navigate('SuccessRegModal')
-        }
-        if (fullName == '') {
-            setIsValidFullName(false)
-        }
-        if (phoneNumber == '') {
-            setIsValidPhoneNumber(false)
-        }
-        if (email == '') {
-            setIsValidEmail(false)
-        }
-        if (password == '') {
-            setIsValidPassword(false)
-        }
-        if (confirmPassword == '') {
-            setIsValidConfirmPassword(false)
-        }
-        if (!toggleTos) {
-            showAlert()
-        }
-
+    const stepDownRegistration = () => {
+        setRegistrationStep(prevState => prevState - 1)
     }
-
-    const showAlert = () => {
-        Alert.alert(
-          "Terms and Conditions",
-          "You must agree to the Terms of Service and Privacy Policy.",
-          [
-            {
-              text: "Okay",
-              onPress: () => {
-              },
-              style: "cancel",
-            },
-          ]
-        )
-      }
 
     return (
         <SafeAreaView className={`flex-1 bg-black flex-column items-center`}>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+                enabled={false}>
             <StatusBar barStyle="light-content" backgroundColor="black" />
-            {/* Company Logo */}
+            {/* Logo */}
             <View className='h-[20%] flex-row justify-center items-end'>
                 <NewspaperIcon fill="white" size={70} />
             </View>
-            {/* Prompt to Login or Register */}
+            {/* Background */}
+            <BlurCirclesBg />
+            {/* Progress Bar */}
+            <ProgressBar registrationStep={registrationStep} />
+            {/* Registration Steps*/}
             <View className={`h-[80%] flex-column ${Platform.OS === 'web' && 'w-[30%]'}`}>
-                <View className={`mt-10 ml-10 mr-10 p-5 bg-white rounded-2xl flex-column items-center`}>
-                    <TextInput
+                <View className={`mt-10 ml-10 mr-10 p-5 w-[300px] bg-white rounded-2xl flex-column items-center`}>
+                    {registrationStep == 0 && <StepOne stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration}/>}
+                    {registrationStep == 1 && <StepTwo stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration}/>}
+                    {/* <TextInput
                         placeholder='Full Name'
                         className={`text-xl w-[100%] p-1 border-b-2 ${!isValidFullName && 'border-b-red-500'}`}
                         onChangeText={(value) => checkForm('name', value)}
@@ -212,15 +225,9 @@ const RegistrationModal = () => {
                         onChangeText={(value) => checkForm('phone', value)}
                     />
                     {phoneNumber == '' && !isValidPhoneNumber && <TextInput className='self-start text-red-500'>This is a required field.</TextInput>}
-                    {phoneNumber != '' && !isValidPhoneNumber && <TextInput className='self-start text-red-500'>Follow format: 09XXXXXXXXX </TextInput>}
-                    <TextInput
-                        placeholder='Email Address'
-                        className={`border-b-2 text-xl w-[100%] p-1 ${!isValidEmail && 'border-b-red-500'}`}
-                        onChangeText={(value) => checkForm('email', value)}
-                    />
-                    {email == '' && !isValidEmail && <TextInput className='self-start text-red-500'>This is a required field.</TextInput>}
-                    {email != '' && !isValidEmail && <TextInput className='self-start text-red-500'>Invalid email.</TextInput>}
-                    <TextInput
+                    {phoneNumber != '' && !isValidPhoneNumber && <TextInput className='self-start text-red-500'>Follow format: 09XXXXXXXXX </TextInput>} */}
+
+                    {/* <TextInput
                         secureTextEntry={true}
                         placeholder='Password'
                         className={`border-b-2 text-xl w-[100%] p-1 ${!isValidPassword && 'border-b-red-500'}`}
@@ -239,39 +246,42 @@ const RegistrationModal = () => {
                     <View className='mt-3 items-start w-[100%]'>
                         <Text className={passwordCheckLength ? 'text-green-500' : 'text-gray-300'}> ✓ Has atleast 8 character</Text>
                         <Text className={passwordCheckCharacter ? 'text-green-500' : 'text-gray-300'}> ✓ Has an uppercase, lowercase, digits, and symbols</Text>
-                    </View>
+                    </View> */}
 
                     {/* {!isValidCredentials && <TextInput className='self-start text-red-500'>Invalid email address or password</TextInput>} */}
-                    <View className='flex-row items-center w-[100%] justify-between mt-4'>
-                        <View className='flex-row'>
-                            <CheckBox
-                                // disabled={false}
-                                value={toggleTos}
-                                onValueChange={() => {
-                                    { setToggleTos(!toggleTos) }
-                                }}
-                            />
-                            <Text className={`ml-2 mr-5 `}>By creating an account, you agree to our Terms of Service and Privacy Policy</Text>
-                        </View>
-                    </View>
 
-                    <Pressable
-                        onPress={() => {
-                            // // Alert.alert(rememberMe.toString())
-                            completeSignUp()
-                        }}
-                        className='mt-4 bg-black w-[100%] p-3 rounded-xl flex-row justify-center items-center'>
-                        <Text className='text-white text-xl font-bold'>SIGN UP</Text>
-                    </Pressable>
+
+
+
+                    {/* {registrationStep > 0 && registrationStep < 9 &&
+                        <View className='w-[100%] flex-row mt-4 space-x-2'>
+                            <Pressable
+                                onPress={() => {
+                                    stepDownRegistration()
+                                }}
+                                className='flex-1 w-[50%] bg-[#1C1C1E] p-3 rounded-xl flex-row justify-center items-center'>
+                                <Text className='text-white text-xl font-bold' style={{ fontFamily: "Poppins-SemiBold" }}>Back</Text>
+                            </Pressable>
+                            <Pressable
+                                onPress={() => {
+                                    stepUpRegistration()
+                                }}
+                                className='flex-1 w-[50%] bg-[#1C1C1E] p-3 rounded-xl flex-row justify-center items-center'>
+                                <Text className='text-white text-xl font-bold' style={{ fontFamily: "Poppins-SemiBold" }}>Proceed</Text>
+                            </Pressable>
+                        </View>
+                    } */}
+
                 </View>
                 <View className='self-center flex-row mt-4'>
-                    <Text className='text-white'>Already have an account? </Text>
+                    <Text className='text-white' style={{ fontFamily: "Poppins-Regular" }}>Already have an account? </Text>
                     <Pressable
-                        onPress={() => navigation.navigate('LoginModal')}>
-                        <Text className='text-green-600'>Sign in! </Text>
+                        onPress={() => navigation.navigate('Login')}>
+                        <Text className='text-[#32D74B]' style={{ fontFamily: "Poppins-Regular" }}>Sign in! </Text>
                     </Pressable>
                 </View>
             </View>
+            </KeyboardAvoidingView>
         </SafeAreaView>
     )
 }

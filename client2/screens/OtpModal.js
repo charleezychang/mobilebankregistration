@@ -79,11 +79,11 @@ const OtpModal = () => {
       <StatusBar barStyle="light-content" backgroundColor="black" />
       <BlurCirclesBg />
       {/* Lock Logo */}
-      <View className='h-[15%] flex-row justify-center items-end'>
+      <View className='h-[10%] flex-row justify-center items-end'>
         <Text style={{fontFamily: "Poppins-SemiBold"}} className="text-white text-[20px]">OTP Verification</Text>
       </View>
       {/* Enter OTP */}
-      <View className='h-[85%] flex-column '>
+      <View className='h-[90%] flex-column '>
         <View className='mt-10  rounded-2xl flex-column items-center'>
           <Text className='text-[16px] text-white' style={{fontFamily: "Poppins-Regular"}}>An authentication code has been sent to</Text>
           <Text className='text-[16px] text-white' style={{fontFamily: "Poppins-Regular"}}>(+63) 915 *** 2351</Text>

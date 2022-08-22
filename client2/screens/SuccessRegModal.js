@@ -35,7 +35,7 @@ const SuccessRegModal = () => {
 
           <Pressable
             onPress={() => {
-              navigation.navigate('LoginModal')
+              navigation.navigate('Login')
             }}
             className='mt-4 bg-black w-[100%] p-3 rounded-xl flex-row justify-center items-center'>
             <Text className='text-white text-xl font-bold'>SIGN IN</Text>

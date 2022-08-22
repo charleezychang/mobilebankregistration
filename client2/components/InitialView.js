@@ -24,7 +24,7 @@ const InitialView = (props) => {
                     <Text className='text-md pt-2 text-center' style={{fontFamily: "Poppins-Regular"}}>Deliver your order around the world without hesitation</Text>
                     <Pressable
                         onPress={() => {
-                            navigation.navigate('LoginModal')
+                            navigation.navigate('Login')
                         }}
                         className='mt-5 w-[100%] bg-[#1C1C1E] p-3 rounded-xl flex-row justify-center items-center'
                     // style={{

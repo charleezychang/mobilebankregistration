@@ -2,10 +2,10 @@ import { View, Text, StatusBar, Image, Pressable, TextInput, Alert, Switch, Plat
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
-import NetInfo from "@react-native-community/netinfo";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CheckBox from 'expo-checkbox';
 import BlurCirclesBg from '../components/BlurCirclesBg'
+import useCheckConnection from '../hooks/useCheckConnection';
 
 const LoginModal = (props) => {
     const [rememberMe, setRememberMe] = useState(null)
@@ -14,21 +14,17 @@ const LoginModal = (props) => {
     const [password, setPassword] = useState('')
     const [isValidCredentials, setIsValidCredentials] = useState(true)
 
-
     // placeholder for account database
     let myAccount = {
         email: "charles@gmail.com",
         password: "password123"
     }
+
     const navigation = useNavigation()
+
+    useCheckConnection()
+
     useEffect(() => {
-        navigation.navigate('NoConnection')
-        const unsubscribe = NetInfo.addEventListener(state => {
-            // set state.isConnected to true if want to check NoConnectionScreen
-            if (state.isConnected == false) {
-                navigation.navigate('NoConnection')
-            }
-        });
         // check rememberMe toggle from storage
         if (rememberMe == null) {
             const fetchRememberMe = async () => {
@@ -48,10 +44,6 @@ const LoginModal = (props) => {
                 }
             }
             fetchRememberMe()
-        }
-
-        return () => {
-            unsubscribe();
         }
     }, [])
 
@@ -106,6 +98,7 @@ const LoginModal = (props) => {
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 enabled={false}>
                 <StatusBar barStyle="light-content" backgroundColor="black" />
+                {/* Background */}
                 <BlurCirclesBg />
                 {/* Company Logo */}
                 <View className='h-[40%] flex-row justify-center items-end'>
@@ -117,8 +110,8 @@ const LoginModal = (props) => {
                         <TextInput
                             defaultValue={email}
                             placeholder='Enter your email address'
-                            className={`text-xl w-[100%] p-1 border-b-2 ${!isValidEmail && 'border-b-red-500'}` }
-                            style={{fontFamily: "Poppins-Regular"}}
+                            className={`text-xl w-[100%] p-1 border-b-2 ${!isValidEmail && 'border-b-red-500'}`}
+                            style={{ fontFamily: "Poppins-Regular" }}
                             onEndEditing={(event) => {
                                 emailValidation(event.nativeEvent.text)
                                 setEmail(event.nativeEvent.text)
@@ -127,17 +120,17 @@ const LoginModal = (props) => {
                                 }
                             }}
                         />
-                        {!isValidEmail && <TextInput className='self-start text-red-500' style={{fontFamily: "Poppins-Regular"}}>Invalid email address</TextInput>}
+                        {!isValidEmail && <TextInput className='self-start text-red-500' style={{ fontFamily: "Poppins-Regular" }}>Invalid email address</TextInput>}
                         <TextInput
                             secureTextEntry={true}
                             placeholder='Enter your password'
                             className=' border-b-2 text-xl w-[100%] p-1 mt-2'
-                            style={{fontFamily: "Poppins-Regular"}}
+                            style={{ fontFamily: "Poppins-Regular" }}
                             onChangeText={(passwordInput) => {
                                 setPassword(passwordInput)
                             }}
                         />
-                        {!isValidCredentials && <TextInput className='self-start text-red-500' style={{fontFamily: "Poppins-Regular"}}>Invalid email address or password</TextInput>}
+                        {!isValidCredentials && <TextInput className='self-start text-red-500' style={{ fontFamily: "Poppins-Regular" }}>Invalid email address or password</TextInput>}
                         <View className='flex-row items-center w-[100%] justify-between mt-4'>
                             <View className='flex-row items-center'>
                                 <CheckBox
@@ -147,10 +140,10 @@ const LoginModal = (props) => {
                                         toggleRememberMe('emailstorage')
                                     }}
                                 />
-                                <Text className='ml-2' style={{fontFamily: "Poppins-Regular"}}>Remember Me</Text>
+                                <Text className='ml-2' style={{ fontFamily: "Poppins-Regular" }}>Remember Me</Text>
                             </View>
                             <Pressable>
-                                <Text style={{fontFamily: "Poppins-Regular"}}>Forgot Password?</Text>
+                                <Text style={{ fontFamily: "Poppins-Regular" }}>Forgot Password?</Text>
                             </Pressable>
                         </View>
 
@@ -159,12 +152,12 @@ const LoginModal = (props) => {
                                 verifyLogin()
                             }}
                             className='mt-4 bg-[#1C1C1E] w-[100%] p-3 rounded-xl flex-row justify-center items-center'>
-                            <Text className='text-white text-xl' style={{fontFamily: "Poppins-SemiBold"}}>Login</Text>
+                            <Text className='text-white text-xl' style={{ fontFamily: "Poppins-SemiBold" }}>Login</Text>
                         </Pressable>
                     </View>
                     <View className='self-center flex-row mt-4'>
-                        <Text className='text-white' style={{fontFamily: "Poppins-Regular"}}>Don't have an account? </Text>
-                        <Pressable onPress={() => navigation.navigate('RegistrationModal')}><Text style={{fontFamily: "Poppins-Regular"}} className='text-green-600'>Sign-up! </Text></Pressable>
+                        <Text className='text-white' style={{ fontFamily: "Poppins-Regular" }}>Don't have an account? </Text>
+                        <Pressable onPress={() => navigation.navigate('RegistrationModal')}><Text style={{ fontFamily: "Poppins-Regular" }} className='text-green-600'>Sign-up! </Text></Pressable>
                     </View>
                 </View>
             </KeyboardAvoidingView>
