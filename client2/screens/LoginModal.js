@@ -100,7 +100,6 @@ const LoginModal = (props) => {
         }
     }
 
-
     return (
         <SafeAreaView className='flex-1 bg-black'>
             <KeyboardAvoidingView
@@ -109,16 +108,17 @@ const LoginModal = (props) => {
                 <StatusBar barStyle="light-content" backgroundColor="black" />
                 <BlurCirclesBg />
                 {/* Company Logo */}
-                <View className='h-[35%] flex-row justify-center items-end'>
+                <View className='h-[40%] flex-row justify-center items-end'>
                     <Image source={require('../assets/splash.png')} className='h-[50%] mb-4' resizeMode='contain' />
                 </View>
                 {/* Prompt to Login or Register */}
-                <View className={`h-[65%] flex-column`}>
+                <View className={`h-[60%] flex-column`}>
                     <View className={`mt-10 ml-10 mr-10 p-5 bg-white rounded-2xl flex-column items-center `}>
                         <TextInput
                             defaultValue={email}
                             placeholder='Enter your email address'
-                            className={`text-xl w-[100%] p-1 border-b-2 ${!isValidEmail && 'border-b-red-500'}`}
+                            className={`text-xl w-[100%] p-1 border-b-2 ${!isValidEmail && 'border-b-red-500'}` }
+                            style={{fontFamily: "Poppins-Regular"}}
                             onEndEditing={(event) => {
                                 emailValidation(event.nativeEvent.text)
                                 setEmail(event.nativeEvent.text)
@@ -127,16 +127,17 @@ const LoginModal = (props) => {
                                 }
                             }}
                         />
-                        {!isValidEmail && <TextInput className='self-start text-red-500'>Invalid email address</TextInput>}
+                        {!isValidEmail && <TextInput className='self-start text-red-500' style={{fontFamily: "Poppins-Regular"}}>Invalid email address</TextInput>}
                         <TextInput
                             secureTextEntry={true}
                             placeholder='Enter your password'
                             className=' border-b-2 text-xl w-[100%] p-1 mt-2'
+                            style={{fontFamily: "Poppins-Regular"}}
                             onChangeText={(passwordInput) => {
                                 setPassword(passwordInput)
                             }}
                         />
-                        {!isValidCredentials && <TextInput className='self-start text-red-500'>Invalid email address or password</TextInput>}
+                        {!isValidCredentials && <TextInput className='self-start text-red-500' style={{fontFamily: "Poppins-Regular"}}>Invalid email address or password</TextInput>}
                         <View className='flex-row items-center w-[100%] justify-between mt-4'>
                             <View className='flex-row items-center'>
                                 <CheckBox
@@ -146,10 +147,10 @@ const LoginModal = (props) => {
                                         toggleRememberMe('emailstorage')
                                     }}
                                 />
-                                <Text className='ml-2'>Remember Me</Text>
+                                <Text className='ml-2' style={{fontFamily: "Poppins-Regular"}}>Remember Me</Text>
                             </View>
                             <Pressable>
-                                <Text>Forgot Password?</Text>
+                                <Text style={{fontFamily: "Poppins-Regular"}}>Forgot Password?</Text>
                             </Pressable>
                         </View>
 
@@ -158,12 +159,12 @@ const LoginModal = (props) => {
                                 verifyLogin()
                             }}
                             className='mt-4 bg-[#1C1C1E] w-[100%] p-3 rounded-xl flex-row justify-center items-center'>
-                            <Text className='text-white text-xl font-bold'>LOGIN</Text>
+                            <Text className='text-white text-xl' style={{fontFamily: "Poppins-SemiBold"}}>Login</Text>
                         </Pressable>
                     </View>
                     <View className='self-center flex-row mt-4'>
-                        <Text className='text-white'>Don't have an account? </Text>
-                        <Pressable onPress={() => navigation.navigate('RegistrationModal')}><Text className='text-green-600'>Sign-up! </Text></Pressable>
+                        <Text className='text-white' style={{fontFamily: "Poppins-Regular"}}>Don't have an account? </Text>
+                        <Pressable onPress={() => navigation.navigate('RegistrationModal')}><Text style={{fontFamily: "Poppins-Regular"}} className='text-green-600'>Sign-up! </Text></Pressable>
                     </View>
                 </View>
             </KeyboardAvoidingView>

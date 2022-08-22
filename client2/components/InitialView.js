@@ -19,9 +19,9 @@ const InitialView = (props) => {
             {/* Prompt to Login or Register */}
             <View className={`h-[60%] ${Platform.OS === 'web' && 'w-[30%]'}`} >
                 <View className='m-10 p-5 bg-white rounded-2xl flex-column items-center'>
-                    <Text className='text-2xl font-bold'>Welcome to</Text>
-                    <Text className='text-2xl font-bold'>Mobile Banking App</Text>
-                    <Text className='text-md pt-2 text-center'>Deliver your order around the world without hesitation</Text>
+                    <Text className='text-2xl' style={{fontFamily: "Poppins-SemiBold"}}>Welcome to</Text>
+                    <Text className='text-2xl' style={{fontFamily: "Poppins-SemiBold"}}>Mobile Banking App</Text>
+                    <Text className='text-md pt-2 text-center' style={{fontFamily: "Poppins-Regular"}}>Deliver your order around the world without hesitation</Text>
                     <Pressable
                         onPress={() => {
                             navigation.navigate('LoginModal')
@@ -33,14 +33,14 @@ const InitialView = (props) => {
                     // }}
                     >
 
-                        <Text className='text-white text-xl'>Login</Text>
+                        <Text className='text-white text-xl' style={{fontFamily: "Poppins-SemiBold"}}>Login</Text>
                     </Pressable>
                     <Pressable
                         onPress={() => {
                             navigation.navigate('RegistrationModal')
                         }}
                         className='mt-2 bg-[#1C1C1E] w-[100%] p-3 rounded-xl flex-row justify-center items-center'>
-                        <Text className='text-white text-xl'>Register</Text>
+                        <Text className='text-white text-xl' style={{fontFamily: "Poppins-SemiBold"}}>Register</Text>
                     </Pressable>
                 </View>
             </View>
