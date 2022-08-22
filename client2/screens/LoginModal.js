@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import NetInfo from "@react-native-community/netinfo";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CheckBox from 'expo-checkbox';
+import BlurCirclesBg from '../components/BlurCirclesBg'
 
 const LoginModal = (props) => {
     const [rememberMe, setRememberMe] = useState(null)
@@ -49,9 +50,9 @@ const LoginModal = (props) => {
             fetchRememberMe()
         }
 
-        // return () => {
-        //     unsubscribe();
-        // }
+        return () => {
+            unsubscribe();
+        }
     }, [])
 
     const verifyLogin = () => {
@@ -99,19 +100,20 @@ const LoginModal = (props) => {
         }
     }
 
+
     return (
-        <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            enabled={false}
-        >
-            <SafeAreaView className='flex-1 bg-black'>
+        <SafeAreaView className='flex-1 bg-black'>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+                enabled={false}>
                 <StatusBar barStyle="light-content" backgroundColor="black" />
+                <BlurCirclesBg />
                 {/* Company Logo */}
-                <View className='h-[25%] flex-row justify-center items-end'>
-                    <Image source={require('../assets/splash.png')} className='h-[60%] mb-4' resizeMode='contain' />
+                <View className='h-[35%] flex-row justify-center items-end'>
+                    <Image source={require('../assets/splash.png')} className='h-[50%] mb-4' resizeMode='contain' />
                 </View>
                 {/* Prompt to Login or Register */}
-                <View className={`h-[75%] flex-column`}>
+                <View className={`h-[65%] flex-column`}>
                     <View className={`mt-10 ml-10 mr-10 p-5 bg-white rounded-2xl flex-column items-center `}>
                         <TextInput
                             defaultValue={email}
@@ -143,7 +145,6 @@ const LoginModal = (props) => {
                                     onValueChange={() => {
                                         toggleRememberMe('emailstorage')
                                     }}
-
                                 />
                                 <Text className='ml-2'>Remember Me</Text>
                             </View>
@@ -156,7 +157,7 @@ const LoginModal = (props) => {
                             onPress={() => {
                                 verifyLogin()
                             }}
-                            className='mt-4 bg-black w-[100%] p-3 rounded-xl flex-row justify-center items-center'>
+                            className='mt-4 bg-[#1C1C1E] w-[100%] p-3 rounded-xl flex-row justify-center items-center'>
                             <Text className='text-white text-xl font-bold'>LOGIN</Text>
                         </Pressable>
                     </View>
@@ -165,8 +166,8 @@ const LoginModal = (props) => {
                         <Pressable onPress={() => navigation.navigate('RegistrationModal')}><Text className='text-green-600'>Sign-up! </Text></Pressable>
                     </View>
                 </View>
-            </SafeAreaView>
-        </KeyboardAvoidingView>
+            </KeyboardAvoidingView>
+        </SafeAreaView>
     )
 }
 

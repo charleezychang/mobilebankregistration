@@ -2,7 +2,6 @@ import { View, Text, StatusBar, Image, Pressable, Platform, StyleSheet, ImageBac
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
-
 import BlurCirclesBg from './BlurCirclesBg'
 
 const InitialView = (props) => {
