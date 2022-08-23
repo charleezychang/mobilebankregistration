@@ -8,6 +8,7 @@ import BlurCirclesBg from '../components/BlurCirclesBg'
 import ProgressBar from '../components/ProgressBar';
 import StepOne from '../components/RegistrationSteps/StepOne';
 import StepTwo from '../components/RegistrationSteps/StepTwo';
+import StepThree from '../components/RegistrationSteps/StepThree';
 import useDebounce from '../hooks/useDebounce';
 
 const RegistrationModal = (props) => {
@@ -200,7 +201,7 @@ const RegistrationModal = (props) => {
                 enabled={false}>
             <StatusBar barStyle="light-content" backgroundColor="black" />
             {/* Logo */}
-            <View className='h-[20%] flex-row justify-center items-end'>
+            <View className={`${registrationStep == 2 ? 'h[10%]' : 'h-[20%]'}  flex-row justify-center items-end`}>
                 <NewspaperIcon fill="white" size={70} />
             </View>
             {/* Background */}
@@ -208,10 +209,11 @@ const RegistrationModal = (props) => {
             {/* Progress Bar */}
             <ProgressBar registrationStep={registrationStep} />
             {/* Registration Steps*/}
-            <View className={`h-[80%] flex-column ${Platform.OS === 'web' && 'w-[30%]'}`}>
-                <View className={`mt-10 ml-10 mr-10 p-5 w-[300px] bg-white rounded-2xl flex-column items-center`}>
+            <View className={`${registrationStep == 2 ? 'h[90%]' : 'h-[80%]'} flex-column ${Platform.OS === 'web' && 'w-[30%]'}`}>
+                <View className={`mt-10 ml-10 mr-10 p-5 w-[300px] ${registrationStep != 2 && 'bg-white rounded-2xl'} flex-column items-center`}>
                     {registrationStep == 0 && <StepOne stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration}/>}
-                    {registrationStep == 1 && <StepTwo stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration}/>}
+                    {registrationStep == 1 && <StepTwo stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep}/>} 
+                    {registrationStep == 2 && <StepThree stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep}/>} 
                     {/* <TextInput
                         placeholder='Full Name'
                         className={`text-xl w-[100%] p-1 border-b-2 ${!isValidFullName && 'border-b-red-500'}`}
