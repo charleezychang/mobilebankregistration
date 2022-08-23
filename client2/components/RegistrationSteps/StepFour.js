@@ -56,7 +56,6 @@ const StepTwo = ({ stepUpRegistration, stepDownRegistration, registrationStep, s
     })
 
     const checkPassword = (passwordToBeChecked) => {
-        console.log(passwordToBeChecked);
         if (passwordToBeChecked.length >= 8) {
             setPasswordCheckLength(true)
         }
@@ -64,14 +63,12 @@ const StepTwo = ({ stepUpRegistration, stepDownRegistration, registrationStep, s
             setPasswordCheckLength(false)
         }
         if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?])/.test(passwordToBeChecked)) {
-            console.log("checking check character");
             setPasswordCheckCharacter(true)
         }
         else {
             setPasswordCheckCharacter(false)
         }
         if (passwordToBeChecked.length >= 8 && /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?])/.test(passwordToBeChecked)) {
-            console.log('pass');
             return true
         }
         else {
