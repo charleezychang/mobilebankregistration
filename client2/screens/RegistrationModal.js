@@ -9,9 +9,22 @@ import ProgressBar from '../components/ProgressBar';
 import StepOne from '../components/RegistrationSteps/StepOne';
 import StepTwo from '../components/RegistrationSteps/StepTwo';
 import StepThree from '../components/RegistrationSteps/StepThree';
+import StepFour from '../components/RegistrationSteps/StepFour';
 import useDebounce from '../hooks/useDebounce';
 
 const RegistrationModal = (props) => {
+    const [account, setAccount] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        mobile: "",
+        password: "",
+        securityQuestion: "",
+        securityAnswer: "",
+        addressStreet: "",
+
+    })
+
     const [fullName, setFullName] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
     
@@ -87,62 +100,62 @@ const RegistrationModal = (props) => {
             //         setIsValidEmail(false)
             //     }
             //     break;
-            case 'password':
-                if (value == '') {
-                    setPassword('')
-                    setIsValidPassword(false)
-                    setPasswordCheckLength(false)
-                    setPasswordCheckCharacter(false)
-                }
-                else if (value && checkPassword(value)) {
-                    setPassword(value)
-                    setIsValidPassword(true)
-                }
-                else {
-                    setPassword(value)
-                    setIsValidPassword(false)
-                }
-                break;
-            case 'confirm':
-                if (value == '') {
-                    setConfirmPassword('')
-                    setIsValidConfirmPassword(false)
-                }
-                else if (value && value == password) {
-                    setConfirmPassword(value)
-                    setIsValidConfirmPassword(true)
-                }
-                else {
-                    setConfirmPassword(value)
-                    setIsValidConfirmPassword(false)
-                }
-                break;
+            // case 'password':
+            //     if (value == '') {
+            //         setPassword('')
+            //         setIsValidPassword(false)
+            //         setPasswordCheckLength(false)
+            //         setPasswordCheckCharacter(false)
+            //     }
+            //     else if (value && checkPassword(value)) {
+            //         setPassword(value)
+            //         setIsValidPassword(true)
+            //     }
+            //     else {
+            //         setPassword(value)
+            //         setIsValidPassword(false)
+            //     }
+            //     break;
+            // case 'confirm':
+            //     if (value == '') {
+            //         setConfirmPassword('')
+            //         setIsValidConfirmPassword(false)
+            //     }
+            //     else if (value && value == password) {
+            //         setConfirmPassword(value)
+            //         setIsValidConfirmPassword(true)
+            //     }
+            //     else {
+            //         setConfirmPassword(value)
+            //         setIsValidConfirmPassword(false)
+            //     }
+            //     break;
             default:
                 break;
         }
     })
 
-    const checkPassword = (passwordToBeChecked) => {
-        if (passwordToBeChecked.length >= 8) {
-            setPasswordCheckLength(true)
-        }
-        else {
-            setPasswordCheckLength(false)
-        }
-        if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?])/.test(passwordToBeChecked)) {
-            console.log("checking check character");
-            setPasswordCheckCharacter(true)
-        }
-        else {
-            setPasswordCheckCharacter(false)
-        }
-        if (passwordToBeChecked.length >= 8 && /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?])/.test(passwordToBeChecked)) {
-            return true
-        }
-        else {
-            return false
-        }
-    }
+    // const checkPassword = (passwordToBeChecked) => {
+    //     if (passwordToBeChecked.length >= 8) {
+    //         setPasswordCheckLength(true)
+    //     }
+    //     else {
+    //         setPasswordCheckLength(false)
+    //     }
+    //     if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?])/.test(passwordToBeChecked)) {
+    //         console.log("checking check character");
+    //         setPasswordCheckCharacter(true)
+    //     }
+    //     else {
+    //         setPasswordCheckCharacter(false)
+    //     }
+    //     if (passwordToBeChecked.length >= 8 && /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?])/.test(passwordToBeChecked)) {
+    //         return true
+    //     }
+    //     else {
+    //         return false
+    //     }
+    // }
 
     
 
@@ -211,9 +224,10 @@ const RegistrationModal = (props) => {
             {/* Registration Steps*/}
             <View className={`${registrationStep == 2 ? 'h[90%]' : 'h-[80%]'} flex-column ${Platform.OS === 'web' && 'w-[30%]'}`}>
                 <View className={`mt-10 ml-10 mr-10 p-5 w-[300px] ${registrationStep != 2 && 'bg-white rounded-2xl'} flex-column items-center`}>
-                    {registrationStep == 0 && <StepOne stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration}/>}
-                    {registrationStep == 1 && <StepTwo stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep}/>} 
-                    {registrationStep == 2 && <StepThree stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep}/>} 
+                    {registrationStep == 0 && <StepOne stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>}
+                    {registrationStep == 1 && <StepTwo stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
+                    {registrationStep == 2 && <StepThree stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
+                    {(registrationStep == 3 || registrationStep == 4) && <StepFour stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
                     {/* <TextInput
                         placeholder='Full Name'
                         className={`text-xl w-[100%] p-1 border-b-2 ${!isValidFullName && 'border-b-red-500'}`}

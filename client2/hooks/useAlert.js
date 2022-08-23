@@ -1,6 +1,6 @@
 import { Alert } from 'react-native'
 
-const useAlert = ({title, message, button}) => {
+export const useAlert = ({ title, message, button }) => {
     Alert.alert(
         title,
         message,
@@ -14,6 +14,3 @@ const useAlert = ({title, message, button}) => {
         ]
     )
 }
-
-
-export default useAlert

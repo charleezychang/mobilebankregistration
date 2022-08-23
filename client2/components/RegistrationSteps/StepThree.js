@@ -5,31 +5,20 @@ import { useNavigation } from '@react-navigation/native';
 import NetInfo from "@react-native-community/netinfo";
 import BlurCirclesBg from '../BlurCirclesBg'
 
-const OtpModal = ({ stepUpRegistration, stepDownRegistration, registrationStep }) => {
+const OtpModal = ({ stepUpRegistration, stepDownRegistration, registrationStep, setAccount, account }) => {
     const navigation = useNavigation()
     const [pinCode, setPinCode] = useState([])
 
     let myPincode = [2, 3, 4, 1]
 
     useEffect(() => {
-        const unsubscribe = NetInfo.addEventListener(state => {
-            // set state.isConnected to true if want to check NoConnectionScreen
-            if (state.isConnected == false) {
-                navigation.navigate('NoConnection')
-            }
-        });
         verifyOtp()
-        return () => {
-            unsubscribe();
-        }
     }, [pinCode])
 
     const verifyOtp = () => {
         if (pinCode.toString() === myPincode.toString()) {
             // get JWT and:
-            navigation.navigate('Home', {
-                isLoggedIn: true
-            })
+            proceedHandler()
         }
         else if (pinCode.length == 4 && pinCode.toString() !== myPincode.toString()) {
             // modal
@@ -38,6 +27,7 @@ const OtpModal = ({ stepUpRegistration, stepDownRegistration, registrationStep }
             // setIsValidPinCode(false)
         }
     }
+
 
     const addNumberToPin = (number) => {
         if (pinCode.length <= 3) {
@@ -92,7 +82,7 @@ const OtpModal = ({ stepUpRegistration, stepDownRegistration, registrationStep }
             <View className='h-[100%] flex-column'>
                 <View className='rounded-2xl flex-column items-center'>
                     <Text className='text-[16px] text-white' style={{ fontFamily: "Poppins-Regular" }}>An authentication code has been sent to</Text>
-                    <Text className='text-[16px] text-white' style={{ fontFamily: "Poppins-Regular" }}>(+63) 915 *** 2351</Text>
+                    <Text className='text-[16px] text-white' style={{ fontFamily: "Poppins-SemiBold" }}>{account.email}</Text>
                     <View className='w-[100%] mt-8 mb-10 px-16 flex-row justify-center'>
                         <View className={`h-[12px] w-[12px] mx-[29.5px] rounded-full ${pinCode.length >= 1 ? 'bg-[#32D74B]' : 'bg-[#1C1C1E]'}`}>
                         </View>

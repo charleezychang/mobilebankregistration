@@ -2,7 +2,7 @@ import { View, Text, TextInput, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import useDebounce from '../../hooks/useDebounce'
 
-const StepTwo = ({ stepUpRegistration, stepDownRegistration, registrationStep }) => {
+const StepTwo = ({ stepUpRegistration, stepDownRegistration, registrationStep, setAccount }) => {
     const [email, setEmail] = useState('')
     const [isValidEmail, setIsValidEmail] = useState(true)
 
@@ -22,6 +22,12 @@ const StepTwo = ({ stepUpRegistration, stepDownRegistration, registrationStep })
     })
 
     const proceedHandler = () => {
+        setAccount(prevState => {
+            return ({
+                ...prevState,
+                email: email
+            });
+        })
         stepUpRegistration()
     }
 
