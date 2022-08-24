@@ -37,11 +37,19 @@ const StepOne = ({ stepUpRegistration, stepDownRegistration }) => {
                     <Text className={`ml-2 mr-5 text-[12px]`} style={{ fontFamily: "Poppins-Regular" }}>By creating an account, you agree to our Terms of Service and Privacy Policy</Text>
                 </View>
             </View>
-            <Pressable
+            {/* <Pressable
                 onPress={() => {
                     proceedHandler()
                 }}
                 className='mt-4 bg-[#1C1C1E] w-[100%] p-3 rounded-xl flex-row justify-center items-center'>
+                <Text className='text-white text-xl font-bold' style={{ fontFamily: "Poppins-SemiBold" }}>Proceed</Text>
+            </Pressable> */}
+            <Pressable
+                disabled={toggleTos ? false : true}
+                onPress={() => {
+                    proceedHandler()
+                }}
+                className={`mt-4 w-[100%] ${toggleTos ? 'bg-[#1C1C1E]' : 'bg-gray-400'} p-3 rounded-xl flex-row justify-center items-center`}>
                 <Text className='text-white text-xl font-bold' style={{ fontFamily: "Poppins-SemiBold" }}>Proceed</Text>
             </Pressable>
         </>

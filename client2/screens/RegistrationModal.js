@@ -10,6 +10,7 @@ import StepOne from '../components/RegistrationSteps/StepOne';
 import StepTwo from '../components/RegistrationSteps/StepTwo';
 import StepThree from '../components/RegistrationSteps/StepThree';
 import StepFour from '../components/RegistrationSteps/StepFour';
+import StepFive from '../components/RegistrationSteps/StepFive'
 import useDebounce from '../hooks/useDebounce';
 
 const RegistrationModal = (props) => {
@@ -224,10 +225,11 @@ const RegistrationModal = (props) => {
             {/* Registration Steps*/}
             <View className={`${registrationStep == 2 ? 'h[90%]' : 'h-[80%]'} flex-column ${Platform.OS === 'web' && 'w-[30%]'}`}>
                 <View className={`mt-10 ml-10 mr-10 p-5 w-[300px] ${registrationStep != 2 && 'bg-white rounded-2xl'} flex-column items-center`}>
-                    {registrationStep == 0 && <StepOne stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>}
-                    {registrationStep == 1 && <StepTwo stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
-                    {registrationStep == 2 && <StepThree stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
-                    {(registrationStep == 3 || registrationStep == 4) && <StepFour stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
+                    {/* {registrationStep == 0 && <StepOne stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} */}
+                    {/* {registrationStep == 1 && <StepTwo stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>}  */}
+                    {/* {registrationStep == 2 && <StepThree stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>}  */}
+                    {/* {(registrationStep == 3 || registrationStep == 4) && <StepFour stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>}  */}
+                    {registrationStep == 0 && <StepFive stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
                     {/* <TextInput
                         placeholder='Full Name'
                         className={`text-xl w-[100%] p-1 border-b-2 ${!isValidFullName && 'border-b-red-500'}`}
