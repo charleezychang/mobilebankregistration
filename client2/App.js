@@ -29,7 +29,6 @@ import {
 } from '@expo-google-fonts/poppins'
 
 
-
 export default function App() {
   
   useEffect(() => {
@@ -57,9 +56,6 @@ export default function App() {
   if (!fontsLoaded) {
     return <AppLoading />
   }
-
-
-
 
   const Stack = createNativeStackNavigator();
 

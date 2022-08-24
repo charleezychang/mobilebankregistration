@@ -92,26 +92,27 @@ const StepTwo = ({ stepUpRegistration, stepDownRegistration, registrationStep, s
 
     return (
         <>
-            <Text style={{ fontFamily: "Poppins-SemiBold" }} className='text-lg'>Account Credentials</Text>
+            <Text style={{ fontFamily: "Poppins-SemiBold" }} className='text-lg mb-4'>Account Credentials</Text>
+            <Text style={{ fontFamily: "Poppins-Regular" }} className='mb-2 self-start'>Please enter a password.</Text>
             <TextInput
                 secureTextEntry={true}
                 placeholder='Password'
                 className={`border-b-2 text-xl w-[100%] py-1 px-2 ${!isValidPassword && 'border-b-red-500'}`}
                 onChangeText={(value) => checkInput('password', value)}
             />
-            {password == '' && !isValidPassword && <TextInput className='self-start text-red-500'>This is a required field.</TextInput>}
-            {password != '' && !isValidPassword && <TextInput className='self-start text-red-500'>Follow password format.</TextInput>}
+            {password == '' && !isValidPassword && <Text className='self-start text-red-500' style={{fontFamily: "Poppins-Regular"}}>This is a required field.</Text>}
+            {password != '' && !isValidPassword && <Text className='self-start text-red-500' style={{fontFamily: "Poppins-Regular"}}>Follow password format.</Text>}
             {(isValidPassword && password != "") && <TextInput
                 secureTextEntry={true}
                 placeholder='Confirm Password'
                 className={`border-b-2 text-xl w-[100%] mt-2 py-1 px-2 ${!isValidConfirmPassword && 'border-b-red-500'}`}
                 onChangeText={(value) => checkInput('confirm', value)}
             />}
-            {confirmPassword == '' && !isValidConfirmPassword && <TextInput className='self-start text-red-500'>This is a required field.</TextInput>}
-            {confirmPassword != '' && !isValidConfirmPassword && <TextInput className='self-start text-red-500'>Password does not match.</TextInput>}
+            {confirmPassword == '' && !isValidConfirmPassword && <Text className='self-start text-red-500' style={{fontFamily: "Poppins-Regular"}}>This is a required field.</Text>}
+            {confirmPassword != '' && !isValidConfirmPassword && <Text className='self-start text-red-500' style={{fontFamily: "Poppins-Regular"}}>Password does not match.</Text>}
             <View className='mt-3 items-start w-[100%]'>
-                <Text className={passwordCheckLength ? 'text-green-500' : 'text-gray-300'}> ✓ Has atleast 8 character</Text>
-                <Text className={passwordCheckCharacter ? 'text-green-500' : 'text-gray-300'}> ✓ Has an uppercase, lowercase, digits, and symbols</Text>
+                <Text className={passwordCheckLength ? 'text-green-500' : 'text-gray-300'} style={{fontFamily: "Poppins-Regular"}}> ✓ Has atleast 8 character</Text>
+                <Text className={passwordCheckCharacter ? 'text-green-500' : 'text-gray-300'} style={{fontFamily: "Poppins-Regular"}}> ✓ Has an uppercase, lowercase, digits, and symbols</Text>
             </View>
             <View className='w-[100%] flex-row mt-4 space-x-2'>
                 <Pressable

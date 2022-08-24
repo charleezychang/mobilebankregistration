@@ -38,6 +38,7 @@ const StepTwo = ({ stepUpRegistration, stepDownRegistration, registrationStep, s
     return (
         <>
             <Text style={{ fontFamily: "Poppins-SemiBold" }} className='text-lg mb-4'>Account Username</Text>
+            <Text style={{ fontFamily: "Poppins-Regular" }} className='mb-2 self-start'>Please enter your email address.</Text>
             <TextInput
                 placeholder='Email Address'
                 className={`text-lg w-[100%] py-1 px-2 ${!isValidEmail && 'border-b-red-500'} ${registrationStep != 1 ? 'bg-gray-100 rounded-md text-gray-400' : 'border-b-2'}`}
@@ -46,8 +47,8 @@ const StepTwo = ({ stepUpRegistration, stepDownRegistration, registrationStep, s
                 editable={registrationStep == 1 && true}
                 defaultValue={email}
             />
-            {email == '' && !isValidEmail && <TextInput className='self-start text-red-500' style={{ fontFamily: "Poppins-Regular" }}>This is a required field.</TextInput>}
-            {email != '' && !isValidEmail && <TextInput className='self-start text-red-500' style={{ fontFamily: "Poppins-Regular" }}>Invalid email.</TextInput>}
+            {email == '' && !isValidEmail && <Text className='self-start text-red-500' style={{ fontFamily: "Poppins-Regular" }}>This is a required field.</Text>}
+            {email != '' && !isValidEmail && <Text className='self-start text-red-500' style={{ fontFamily: "Poppins-Regular" }}>Invalid email.</Text>}
             {/* {registrationStep == 2 && <View className='m-5 w-[100%] flex-column items-center'>
                 <View className='flex-row space-x-2 mb-5'>
                     <View className='flex-row w-[48px] h-[48px] justify-center items-center rounded-md border-[1px]'><TextInput maxLength={1} keyboardType={'number-pad'} className='text-2xl text-center' style={{fontFamily: "Poppins-Regular"}}/></View>
