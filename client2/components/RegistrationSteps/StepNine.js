@@ -1,9 +1,6 @@
-import { View, Text, StatusBar, Image, Pressable, TextInput, Alert, Switch } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View, Text, Image, Pressable, Alert } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
-import NetInfo from "@react-native-community/netinfo";
-import BlurCirclesBg from '../BlurCirclesBg'
 
 const StepNine = ({ stepUpRegistration, stepDownRegistration, registrationStep, setAccount, account }) => {
     const navigation = useNavigation()

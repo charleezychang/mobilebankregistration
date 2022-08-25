@@ -1,12 +1,8 @@
-import { View, Text, StatusBar, Image, Pressable, TextInput, Alert, Switch } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View, Text, Image, Pressable, Alert } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import { useNavigation } from '@react-navigation/native';
-import NetInfo from "@react-native-community/netinfo";
-import BlurCirclesBg from '../BlurCirclesBg'
+
 
 const StepThree = ({ stepUpRegistration, stepDownRegistration, registrationStep, setAccount, account }) => {
-    const navigation = useNavigation()
     const [pinCode, setPinCode] = useState([])
 
     let myPincode = [2, 3, 4, 1]
@@ -23,7 +19,6 @@ const StepThree = ({ stepUpRegistration, stepDownRegistration, registrationStep,
         else if (pinCode.length == 4 && pinCode.toString() !== myPincode.toString()) {
             // modal
             showAlert()
-
             // setIsValidPinCode(false)
         }
     }
@@ -74,11 +69,6 @@ const StepThree = ({ stepUpRegistration, stepDownRegistration, registrationStep,
 
     return (
         <View>
-            {/* Lock Logo */}
-            {/* <View className='h-[10%] flex-row justify-center items-end'>
-        <Text style={{fontFamily: "Poppins-SemiBold"}} className="text-white text-[20px]">OTP Verification</Text>
-      </View> */}
-            {/* Enter OTP */}
             <View className='h-[100%] flex-column'>
                 <View className='rounded-2xl flex-column items-center'>
                     <Text className='text-[16px] text-white' style={{ fontFamily: "Poppins-Regular" }}>An authentication code has been sent to</Text>
@@ -171,7 +161,6 @@ const StepThree = ({ stepUpRegistration, stepDownRegistration, registrationStep,
                                     <Image source={require('../../assets/backspacepin.png')} />
                                 </Pressable>}
                         </View>
-
                     </View>
                 </View>
                 <View className='self-center flex-row mt-8'>

@@ -18,7 +18,7 @@ const ProgressBar = (props) => {
     }
 
     return (
-        <View className='mt-5 ml-10 mr-10 flex-column items-center w-[300px] h-[8px] justify-center'>
+        <View className='mt-5 ml-10 mr-10 flex-column items-center w-[300px] h-[8px] justify-center self-center'>
             {/* Full Gray Bar */}
             <Svg
                 width={300}

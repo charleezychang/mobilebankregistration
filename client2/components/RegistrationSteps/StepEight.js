@@ -43,20 +43,6 @@ const StepEight = ({ stepUpRegistration, stepDownRegistration, registrationStep,
         <>
             <Text style={{ fontFamily: "Poppins-SemiBold" }} className='text-lg mb-4'>Account Details</Text>
             {/* <Text style={{ fontFamily: "Poppins-Regular" }} className=' self-start'>Please your details.</Text> */}
-            {/* <View className='bg-gray-100 w-[100%] mb-2' style={{ fontFamily: "Poppins-Regular" }}>
-                <Picker
-                    selectedValue={region}
-                    itemStyle={{ fontFamily: "Poppins-Regular" }}
-                    onValueChange={(itemValue, itemIndex) => {
-                        setRegion(itemValue)
-                        // proceedHandler()
-                    }}>
-                    <Picker.Item label="Select Region." enabled={false} value={0} />
-                    {phil.regions.map((region) => {
-                        return <Picker.Item label={region.name} value={region} key={region.name} fontFamily={"Poppins-SemiBold"} style={{fontSize: 12}}/>
-                    })}
-                </Picker>
-            </View> */}
             <View className='bg-gray-100 w-[100%] mb-2' style={{ fontFamily: "Poppins-Regular" }}>
                 <Picker
                     selectedValue={province}

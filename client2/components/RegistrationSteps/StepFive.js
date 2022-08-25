@@ -30,7 +30,6 @@ const StepFive = ({ stepUpRegistration, stepDownRegistration, registrationStep, 
     }
 
     const proceedHandler = () => {
-        // should be == 5
         if (registrationStep == 5) {
             stepUpRegistration()
         }

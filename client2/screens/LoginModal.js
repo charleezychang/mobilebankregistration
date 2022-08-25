@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, Image, Pressable, TextInput, Alert, Switch, Platform, KeyboardAvoidingView } from 'react-native'
+import { View, Text, StatusBar, Image, Pressable, TextInput, Platform, KeyboardAvoidingView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';

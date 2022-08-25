@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Pressable } from 'react-native'
+import { View, Text, TextInput, Pressable, ActivityIndicator } from 'react-native'
 import React, { useState } from 'react'
 import useDebounce from '../../hooks/useDebounce'
 
@@ -12,6 +12,8 @@ const StepSeven = ({ stepUpRegistration, stepDownRegistration, registrationStep,
     const [isValidLastName, setIsValidLastName] = useState(true)
     const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(true)
 
+    const [isDebouncing, setIsDebouncing] = useState(false)
+
     const generalValidator = () => {
         if (firstName != "" &&
             lastName != "" &&
@@ -24,6 +26,7 @@ const StepSeven = ({ stepUpRegistration, stepDownRegistration, registrationStep,
     }
 
     const checkInput = useDebounce((key, value) => {
+        setIsDebouncing(false)
         switch (key) {
             case 'firstname':
                 if (value == '') {
@@ -73,6 +76,56 @@ const StepSeven = ({ stepUpRegistration, stepDownRegistration, registrationStep,
         }
     })
 
+    const checkInputNoDebounce = (key, value) => {
+        switch (key) {
+            case 'firstname':
+                if (value == '') {
+                    setFirstName('')
+                    setIsValidFirstName(false)
+                }
+                else if (value && /^[a-zA-Z\s.,'-]*$/.test(value)) {
+                    setFirstName(value)
+                    setIsValidFirstName(true)
+                }
+                else {
+                    setFirstName(value)
+                    setIsValidFirstName(false)
+                }
+                break;
+            case 'lastname':
+                if (value == '') {
+                    setLastName('')
+                    setIsValidLastName(false)
+                }
+                else if (value && /^[a-zA-Z\s.,'-]*$/.test(value)) {
+                    setLastName(value)
+                    setIsValidLastName(true)
+                }
+                else {
+                    setLastName(value)
+                    setIsValidLastName(false)
+                }
+                break;
+            case 'phone':
+                if (value == '') {
+                    setPhoneNumber('')
+                    setIsValidPhoneNumber(false)
+                }
+                else if (value && /^(09)\d{9}$/.test(value)) {
+                    setPhoneNumber(value)
+                    setIsValidPhoneNumber(true)
+                }
+                else {
+                    setPhoneNumber(value)
+                    setIsValidPhoneNumber(false)
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
+
     const proceedHandler = () => {
         setAccount(prevState => {
             return ({
@@ -96,7 +149,11 @@ const StepSeven = ({ stepUpRegistration, stepDownRegistration, registrationStep,
             <TextInput
                 placeholder='First Name'
                 className={`border-b-2 text-xl w-[100%] py-1 px-2 mt-2 ${!isValidFirstName && 'border-b-red-500'}`}
-                onChangeText={(value) => checkInput('firstname', value)}
+                onChangeText={(value) => {
+                    setIsDebouncing(true)
+                    checkInput('firstname', value)
+                }}
+                onEndEditing={event => checkInputNoDebounce('firstname', event.nativeEvent.text)}
                 style={{ fontFamily: "Poppins-Regular" }}
             />
             {firstName == '' && !isValidFirstName && <Text className='self-start text-red-500' style={{ fontFamily: "Poppins-Regular" }}>This is a required field.</Text>}
@@ -104,7 +161,11 @@ const StepSeven = ({ stepUpRegistration, stepDownRegistration, registrationStep,
             <TextInput
                 placeholder='Last Name'
                 className={`border-b-2 text-xl w-[100%] py-1 px-2 mt-2 ${!isValidLastName && 'border-b-red-500'}`}
-                onChangeText={(value) => checkInput('lastname', value)}
+                onChangeText={(value) => {
+                    setIsDebouncing(true)
+                    checkInput('lastname', value)
+                }}
+                onEndEditing={event => checkInputNoDebounce('lastname', event.nativeEvent.text)}
                 style={{ fontFamily: "Poppins-Regular" }}
             />
             {lastName == '' && !isValidLastName && <Text className='self-start text-red-500' style={{ fontFamily: "Poppins-Regular" }}>This is a required field.</Text>}
@@ -112,7 +173,11 @@ const StepSeven = ({ stepUpRegistration, stepDownRegistration, registrationStep,
             <TextInput
                 placeholder='Phone Number'
                 className={`border-b-2 text-xl w-[100%] py-1 px-2 mt-2 ${!isValidPhoneNumber && 'border-b-red-500'}`}
-                onChangeText={(value) => checkInput('phone', value)}
+                onChangeText={(value) => {
+                    setIsDebouncing(true)
+                    checkInput('phone', value)
+                }}
+                onEndEditing={event => checkInputNoDebounce('phone', event.nativeEvent.text)}
                 style={{ fontFamily: "Poppins-Regular" }}
             />
             {phoneNumber == '' && !isValidPhoneNumber && <Text className='self-start text-red-500' style={{ fontFamily: "Poppins-Regular" }}>This is a required field.</Text>}
@@ -132,7 +197,7 @@ const StepSeven = ({ stepUpRegistration, stepDownRegistration, registrationStep,
                         proceedHandler()
                     }}
                     className={`flex-1 w-[50%] ${generalValidator() ? 'bg-[#1C1C1E]' : 'bg-gray-400'} p-3 rounded-xl flex-row justify-center items-center`}>
-                    <Text className='text-white text-xl font-bold' style={{ fontFamily: "Poppins-SemiBold" }}>Proceed</Text>
+                    {isDebouncing ? <ActivityIndicator size="small" color="#ffffff" /> : <Text className='text-white text-xl font-bold' style={{ fontFamily: "Poppins-SemiBold" }}>Proceed</Text>}
                 </Pressable>
 
             </View>

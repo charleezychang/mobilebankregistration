@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, Image, Pressable, TextInput, Alert, Switch, Platform, ScrollView, KeyboardAvoidingView } from 'react-native'
+import { View, Text, StatusBar, Pressable, Platform, KeyboardAvoidingView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
@@ -13,7 +13,6 @@ import StepFour from '../components/RegistrationSteps/StepFour';
 import StepFive from '../components/RegistrationSteps/StepFive'
 import StepSeven from '../components/RegistrationSteps/StepSeven'
 import StepEight from '../components/RegistrationSteps/StepEight';
-import useDebounce from '../hooks/useDebounce';
 import StepNine from '../components/RegistrationSteps/StepNine';
 
 const RegistrationModal = (props) => {
@@ -32,7 +31,7 @@ const RegistrationModal = (props) => {
         streetAddress: ""
     })
 
-    const [registrationStep, setRegistrationStep] = useState(7)
+    const [registrationStep, setRegistrationStep] = useState(0)
 
     const navigation = useNavigation()
 
@@ -57,7 +56,7 @@ const RegistrationModal = (props) => {
     }
 
     return (
-        <SafeAreaView className={`flex-1 bg-black flex-column items-center`}>
+        <SafeAreaView className={`flex-1 bg-black`}>
             <KeyboardAvoidingView
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 enabled={false}>
@@ -71,7 +70,7 @@ const RegistrationModal = (props) => {
             {/* Progress Bar */}
             <ProgressBar registrationStep={registrationStep} />
             {/* Registration Steps*/}
-            <View className={`${(registrationStep == 2 || registrationStep == 9) ? 'h[90%]' : 'h-[80%]'} flex-column ${Platform.OS === 'web' && 'w-[30%]'}`}>
+            <View className={`${(registrationStep == 2 || registrationStep == 9) ? 'h[90%]' : 'h-[80%]'} flex-column self-center ${Platform.OS === 'web' && 'w-[30%]'}`}>
                 <View className={`mt-10 ml-10 mr-10 p-5 w-[300px] ${(registrationStep != 2 && registrationStep != 9) && 'bg-white rounded-2xl'} flex-column items-center`}>
                     {registrationStep == 0 && <StepOne stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>}
                     {registrationStep == 1 && <StepTwo stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
@@ -81,25 +80,6 @@ const RegistrationModal = (props) => {
                     {registrationStep == 7 && <StepSeven stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
                     {registrationStep == 8 && <StepEight stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
                     {registrationStep == 9 && <StepNine stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
-                    {/* {registrationStep > 0 && registrationStep < 9 &&
-                        <View className='w-[100%] flex-row mt-4 space-x-2'>
-                            <Pressable
-                                onPress={() => {
-                                    stepDownRegistration()
-                                }}
-                                className='flex-1 w-[50%] bg-[#1C1C1E] p-3 rounded-xl flex-row justify-center items-center'>
-                                <Text className='text-white text-xl font-bold' style={{ fontFamily: "Poppins-SemiBold" }}>Back</Text>
-                            </Pressable>
-                            <Pressable
-                                onPress={() => {
-                                    stepUpRegistration()
-                                }}
-                                className='flex-1 w-[50%] bg-[#1C1C1E] p-3 rounded-xl flex-row justify-center items-center'>
-                                <Text className='text-white text-xl font-bold' style={{ fontFamily: "Poppins-SemiBold" }}>Proceed</Text>
-                            </Pressable>
-                        </View>
-                    } */}
-
                 </View>
                 <View className='self-center flex-row mt-4'>
                     <Text className='text-white' style={{ fontFamily: "Poppins-Regular" }}>Already have an account? </Text>
