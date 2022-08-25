@@ -172,6 +172,7 @@ const StepSeven = ({ stepUpRegistration, stepDownRegistration, registrationStep,
             {lastName != '' && !isValidLastName && <Text className='self-start text-red-500' style={{ fontFamily: "Poppins-Regular" }}>Invalid name.</Text>}
             <TextInput
                 placeholder='Phone Number'
+                keyboardType='number-pad'
                 className={`border-b-2 text-xl w-[100%] py-1 px-2 mt-2 ${!isValidPhoneNumber && 'border-b-red-500'}`}
                 onChangeText={(value) => {
                     setIsDebouncing(true)

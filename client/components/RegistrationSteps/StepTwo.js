@@ -42,6 +42,7 @@ const StepTwo = ({ stepUpRegistration, stepDownRegistration, registrationStep, s
             <Text style={{ fontFamily: "Poppins-Regular" }} className='mb-2 self-start'>Please enter your email address.</Text>
             <TextInput
                 placeholder='Email Address'
+                keyboardType='email-address'
                 className={`text-lg w-[100%] py-1 px-2 ${!isValidEmail && 'border-b-red-500'} ${registrationStep != 1 ? 'bg-gray-100 rounded-md text-gray-400' : 'border-b-2'}`}
                 onChangeText={(value) => {
                     // setIsDebouncing(true)
