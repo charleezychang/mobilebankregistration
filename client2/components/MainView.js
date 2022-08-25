@@ -42,8 +42,8 @@ const MainView = () => {
     //     headerTitleStyle: {
     //       fontWeight: 'bold',
     //     },
-    //     // tabBarActiveBackgroundColor: "#121212",
-    //     // tabBarInactiveBackgroundColor: "#121212",
+    //     // tabBarActiveBackgroundColor: "black",
+    //     // tabBarInactiveBackgroundColor: "black",
 
     //     tabBarShowLabel: false,
     //     tabBarStyle: {

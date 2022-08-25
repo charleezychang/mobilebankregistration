@@ -21,7 +21,7 @@ const HomeScreen = () => {
     }, [isFocused])
 
     return (
-        <SafeAreaView className='flex-1 bg-[#121212]'>
+        <SafeAreaView className='flex-1 bg-black'>
             {isLoggedIn ? <MainView /> : <InitialView />}
         </SafeAreaView>
     )

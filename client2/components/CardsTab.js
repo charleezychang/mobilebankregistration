@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, ScrollView, ImageBackground, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView, ImageBackground, Dimensions, Pressable } from 'react-native'
 import React, { useLayoutEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Card from './CardsTab/card'
@@ -77,13 +77,13 @@ const CardsScreen = () => {
     }, [])
 
     return (
-        <View className={`bg-[#121212] flex-column flex-grow`}>
+        <View className={`bg-black flex-column flex-grow`}>
             {/* Header */}
             <View className="h-[10%] flex-row items-center p-5 justify-between">
-                <View className="flex-row items-left">
+                <Pressable className="flex-row items-left" onPress={() => navigation.navigate('Home')}>
                     <Image source={require('../assets/arrows.png')} className="h-6 w-6 p-3 rounded-full" />
                     <Text className="text-[#FFFFFF] text-2xl font-semibold ml-5">My cards</Text>
-                </View>
+                </Pressable>
                 <View>
                     <Image source={require('../assets/addcard2.png')} className="h-6 w-6 p-5" />
                 </View>
