@@ -1,6 +1,6 @@
 # mobilebankregistration
 
-Hardcoded credentials
+Hardcoded credentials \n
 Email: charles@gmail.com
 PW: password123
 
