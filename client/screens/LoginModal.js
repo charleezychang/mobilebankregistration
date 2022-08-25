@@ -109,6 +109,7 @@ const LoginModal = (props) => {
                     <View className={`mt-10 ml-10 mr-10 p-5 bg-white rounded-2xl flex-column items-center `}>
                         <TextInput
                             defaultValue={email}
+                            keyboardType='email-address'
                             placeholder='Enter your email address'
                             className={`text-xl w-[100%] p-1 border-b-2 ${!isValidEmail && 'border-b-red-500'}`}
                             style={{ fontFamily: "Poppins-Regular" }}
