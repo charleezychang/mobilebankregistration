@@ -12,7 +12,9 @@ import StepThree from '../components/RegistrationSteps/StepThree';
 import StepFour from '../components/RegistrationSteps/StepFour';
 import StepFive from '../components/RegistrationSteps/StepFive'
 import StepSeven from '../components/RegistrationSteps/StepSeven'
+import StepEight from '../components/RegistrationSteps/StepEight';
 import useDebounce from '../hooks/useDebounce';
+import StepNine from '../components/RegistrationSteps/StepNine';
 
 const RegistrationModal = (props) => {
     const [account, setAccount] = useState({
@@ -23,8 +25,11 @@ const RegistrationModal = (props) => {
         password: "",
         securityQuestion: "",
         securityAnswer: "",
-        addressStreet: "",
-
+        // region: "",
+        province: "",
+        municipality: "",
+        barangay: "",
+        streetAddress: ""
     })
 
     const [registrationStep, setRegistrationStep] = useState(7)
@@ -58,7 +63,7 @@ const RegistrationModal = (props) => {
                 enabled={false}>
             <StatusBar barStyle="light-content" backgroundColor="black" />
             {/* Logo */}
-            <View className={`${registrationStep == 2 ? 'h[10%]' : 'h-[20%]'}  flex-row justify-center items-end`}>
+            <View className={`${(registrationStep == 2 || registrationStep == 9) ? 'h[10%]' : 'h-[20%]'}  flex-row justify-center items-end`}>
                 <NewspaperIcon fill="white" size={70} />
             </View>
             {/* Background */}
@@ -66,55 +71,16 @@ const RegistrationModal = (props) => {
             {/* Progress Bar */}
             <ProgressBar registrationStep={registrationStep} />
             {/* Registration Steps*/}
-            <View className={`${registrationStep == 2 ? 'h[90%]' : 'h-[80%]'} flex-column ${Platform.OS === 'web' && 'w-[30%]'}`}>
-                <View className={`mt-10 ml-10 mr-10 p-5 w-[300px] ${registrationStep != 2 && 'bg-white rounded-2xl'} flex-column items-center`}>
+            <View className={`${(registrationStep == 2 || registrationStep == 9) ? 'h[90%]' : 'h-[80%]'} flex-column ${Platform.OS === 'web' && 'w-[30%]'}`}>
+                <View className={`mt-10 ml-10 mr-10 p-5 w-[300px] ${(registrationStep != 2 && registrationStep != 9) && 'bg-white rounded-2xl'} flex-column items-center`}>
                     {registrationStep == 0 && <StepOne stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>}
                     {registrationStep == 1 && <StepTwo stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
                     {registrationStep == 2 && <StepThree stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
                     {(registrationStep == 3 || registrationStep == 4) && <StepFour stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
                     {(registrationStep == 5 || registrationStep == 6) && <StepFive stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
-                    {(registrationStep == 7) && <StepSeven stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
-                    {/* <TextInput
-                        placeholder='Full Name'
-                        className={`text-xl w-[100%] p-1 border-b-2 ${!isValidFullName && 'border-b-red-500'}`}
-                        onChangeText={(value) => checkForm('name', value)}
-                    />
-                    {fullName == '' && !isValidFullName && <TextInput className='self-start text-red-500'>This is a required field.</TextInput>}
-                    {fullName != '' && !isValidFullName && <TextInput className='self-start text-red-500'>Invalid full name.</TextInput>}
-                    <TextInput
-                        placeholder='Phone Number'
-                        className={`border-b-2 text-xl w-[100%] p-1 ${!isValidPhoneNumber && 'border-b-red-500'}`}
-                        onChangeText={(value) => checkForm('phone', value)}
-                    />
-                    {phoneNumber == '' && !isValidPhoneNumber && <TextInput className='self-start text-red-500'>This is a required field.</TextInput>}
-                    {phoneNumber != '' && !isValidPhoneNumber && <TextInput className='self-start text-red-500'>Follow format: 09XXXXXXXXX </TextInput>} */}
-
-                    {/* <TextInput
-                        secureTextEntry={true}
-                        placeholder='Password'
-                        className={`border-b-2 text-xl w-[100%] p-1 ${!isValidPassword && 'border-b-red-500'}`}
-                        onChangeText={(value) => checkForm('password', value)}
-                    />
-                    {password == '' && !isValidPassword && <TextInput className='self-start text-red-500'>This is a required field.</TextInput>}
-                    {password != '' && !isValidPassword && <TextInput className='self-start text-red-500'>Follow password format.</TextInput>}
-                    <TextInput
-                        secureTextEntry={true}
-                        placeholder='Confirm Password'
-                        className={`border-b-2 text-xl w-[100%] p-1 ${!isValidConfirmPassword && 'border-b-red-500'}`}
-                        onChangeText={(value) => checkForm('confirm', value)}
-                    />
-                    {confirmPassword == '' && !isValidConfirmPassword && <TextInput className='self-start text-red-500'>This is a required field.</TextInput>}
-                    {confirmPassword != '' && !isValidConfirmPassword && <TextInput className='self-start text-red-500'>Password does not match.</TextInput>}
-                    <View className='mt-3 items-start w-[100%]'>
-                        <Text className={passwordCheckLength ? 'text-green-500' : 'text-gray-300'}> ✓ Has atleast 8 character</Text>
-                        <Text className={passwordCheckCharacter ? 'text-green-500' : 'text-gray-300'}> ✓ Has an uppercase, lowercase, digits, and symbols</Text>
-                    </View> */}
-
-                    {/* {!isValidCredentials && <TextInput className='self-start text-red-500'>Invalid email address or password</TextInput>} */}
-
-
-
-
+                    {registrationStep == 7 && <StepSeven stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
+                    {registrationStep == 8 && <StepEight stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
+                    {registrationStep == 9 && <StepNine stepUpRegistration={stepUpRegistration} stepDownRegistration={stepDownRegistration} registrationStep={registrationStep} setAccount={setAccount} account={account}/>} 
                     {/* {registrationStep > 0 && registrationStep < 9 &&
                         <View className='w-[100%] flex-row mt-4 space-x-2'>
                             <Pressable

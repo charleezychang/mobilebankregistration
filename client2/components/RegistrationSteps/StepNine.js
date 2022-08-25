@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import NetInfo from "@react-native-community/netinfo";
 import BlurCirclesBg from '../BlurCirclesBg'
 
-const StepThree = ({ stepUpRegistration, stepDownRegistration, registrationStep, setAccount, account }) => {
+const StepNine = ({ stepUpRegistration, stepDownRegistration, registrationStep, setAccount, account }) => {
     const navigation = useNavigation()
     const [pinCode, setPinCode] = useState([])
 
@@ -65,7 +65,7 @@ const StepThree = ({ stepUpRegistration, stepDownRegistration, registrationStep,
     }
 
     const proceedHandler = () => {
-        stepUpRegistration()
+        navigation.navigate('SuccessRegModal')
     }
 
     const backHandler = () => {
@@ -82,7 +82,7 @@ const StepThree = ({ stepUpRegistration, stepDownRegistration, registrationStep,
             <View className='h-[100%] flex-column'>
                 <View className='rounded-2xl flex-column items-center'>
                     <Text className='text-[16px] text-white' style={{ fontFamily: "Poppins-Regular" }}>An authentication code has been sent to</Text>
-                    <Text className='text-[16px] text-white' style={{ fontFamily: "Poppins-SemiBold" }}>{account.email}</Text>
+                    <Text className='text-[16px] text-white' style={{ fontFamily: "Poppins-SemiBold" }}>{account.phoneNumber}</Text>
                     <View className='w-[100%] mt-8 mb-10 px-16 flex-row justify-center'>
                         <View className={`h-[12px] w-[12px] mx-[29.5px] rounded-full ${pinCode.length >= 1 ? 'bg-[#32D74B]' : 'bg-[#1C1C1E]'}`}>
                         </View>
@@ -183,4 +183,4 @@ const StepThree = ({ stepUpRegistration, stepDownRegistration, registrationStep,
     )
 }
 
-export default StepThree
+export default StepNine
