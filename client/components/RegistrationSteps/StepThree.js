@@ -1,4 +1,4 @@
-import { View, Text, Image, Pressable, Alert } from 'react-native'
+import { View, Text, Image, Pressable, Alert, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
 
 
@@ -85,81 +85,81 @@ const StepThree = ({ stepUpRegistration, stepDownRegistration, registrationStep,
                     </View>
                     <View className='w-[100%] flex-column items-center'>
                         <View className='flex-row'>
-                            <Pressable
+                            <TouchableOpacity
                                 className=' h-[75px] w-[75px] mx-[21.5px] my-[8px] rounded-full bg-[#1C1C1E] flex-row justify-center items-center'
                                 onPress={() => { addNumberToPin(1) }}
                             >
                                 <Text className='text-[32px] text-white' style={{ fontFamily: "Poppins-Light" }}>1</Text>
-                            </Pressable>
-                            <Pressable
+                            </TouchableOpacity>
+                            <TouchableOpacity
                                 className=' h-[75px] w-[75px] mx-[21.5px] my-[8px] rounded-full bg-[#1C1C1E] flex-row justify-center items-center'
                                 onPress={() => { addNumberToPin(2) }}
                             >
                                 <Text className='text-[32px] text-white' style={{ fontFamily: "Poppins-Light" }}>2</Text>
-                            </Pressable>
-                            <Pressable
+                            </TouchableOpacity>
+                            <TouchableOpacity
                                 className=' h-[75px] w-[75px] mx-[21.5px] my-[8px] rounded-full bg-[#1C1C1E] flex-row justify-center items-center'
                                 onPress={() => { addNumberToPin(3) }}
                             >
                                 <Text className='text-[32px] text-white' style={{ fontFamily: "Poppins-Light" }}>3</Text>
-                            </Pressable>
+                            </TouchableOpacity>
                         </View>
                         <View className='flex-row'>
-                            <Pressable
+                            <TouchableOpacity
                                 className=' h-[75px] w-[75px] mx-[21.5px] my-[8px] rounded-full bg-[#1C1C1E] flex-row justify-center items-center'
                                 onPress={() => { addNumberToPin(4) }}
                             >
                                 <Text className='text-[32px] text-white' style={{ fontFamily: "Poppins-Light" }}>4</Text>
-                            </Pressable>
-                            <Pressable
+                            </TouchableOpacity>
+                            <TouchableOpacity
                                 className=' h-[75px] w-[75px] mx-[21.5px] my-[8px] rounded-full bg-[#1C1C1E] flex-row justify-center items-center'
                                 onPress={() => { addNumberToPin(5) }}
                             >
                                 <Text className='text-[32px] text-white' style={{ fontFamily: "Poppins-Light" }}>5</Text>
-                            </Pressable>
-                            <Pressable
+                            </TouchableOpacity>
+                            <TouchableOpacity
                                 className=' h-[75px] w-[75px] mx-[21.5px] my-[8px] rounded-full bg-[#1C1C1E] flex-row justify-center items-center'
                                 onPress={() => { addNumberToPin(6) }}
                             >
                                 <Text className='text-[32px] text-white' style={{ fontFamily: "Poppins-Light" }}>6</Text>
-                            </Pressable>
+                            </TouchableOpacity>
                         </View>
                         <View className='flex-row'>
-                            <Pressable
+                            <TouchableOpacity
                                 className=' h-[75px] w-[75px] mx-[21.5px] my-[8px] rounded-full bg-[#1C1C1E] flex-row justify-center items-center'
                                 onPress={() => { addNumberToPin(7) }}
                             >
                                 <Text className='text-[32px] text-white' style={{ fontFamily: "Poppins-Light" }}>7</Text>
-                            </Pressable>
-                            <Pressable
+                            </TouchableOpacity>
+                            <TouchableOpacity
                                 className=' h-[75px] w-[75px] mx-[21.5px] my-[8px] rounded-full bg-[#1C1C1E] flex-row justify-center items-center'
                                 onPress={() => { addNumberToPin(8) }}
                             >
                                 <Text className='text-[32px] text-white' style={{ fontFamily: "Poppins-Light" }}>8</Text>
-                            </Pressable>
-                            <Pressable
+                            </TouchableOpacity>
+                            <TouchableOpacity
                                 className=' h-[75px] w-[75px] mx-[21.5px] my-[8px] rounded-full bg-[#1C1C1E] flex-row justify-center items-center'
                                 onPress={() => { addNumberToPin(9) }}
                             >
                                 <Text className='text-[32px] text-white' style={{ fontFamily: "Poppins-Light" }}>9</Text>
-                            </Pressable>
+                            </TouchableOpacity>
                         </View>
                         <View className='flex-row'>
-                            <Pressable onPress={backHandler} className=' h-[75px] w-[75px] mx-[21.5px] my-[8px] bg-black rounded-full transparent flex-row justify-center items-center'>
+                            <TouchableOpacity onPress={backHandler} className=' h-[75px] w-[75px] mx-[21.5px] my-[8px] bg-black rounded-full transparent flex-row justify-center items-center'>
                                 <Text className='text-white text-xl' style={{ fontFamily: "Poppins-Light" }}>Back</Text>
-                            </Pressable>
-                            <Pressable
+                            </TouchableOpacity>
+                            <TouchableOpacity
                                 className=' h-[75px] w-[75px] mx-[21.5px] my-[8px] rounded-full bg-[#1C1C1E] flex-row justify-center items-center'
                                 onPress={() => { addNumberToPin(0) }}
                             >
                                 <Text className='text-[32px] text-white' style={{ fontFamily: "Poppins-Light" }}>0</Text>
-                            </Pressable>
+                            </TouchableOpacity>
                             {pinCode.length == 0 ?
                                 <View className=' h-[75px] w-[75px] mx-[21.5px] my-[8px] rounded-full transparent flex-row justify-center items-center'>
                                 </View> :
-                                <Pressable onPress={deleteNumberFromPin} className='h-[75px] w-[75px] mx-[21.5px] my-[8px] rounded-full bg-black flex-row justify-center items-center'>
+                                <TouchableOpacity onPress={deleteNumberFromPin} className='h-[75px] w-[75px] mx-[21.5px] my-[8px] rounded-full bg-black flex-row justify-center items-center'>
                                     <Image source={require('../../assets/backspacepin.png')} />
-                                </Pressable>}
+                                </TouchableOpacity>}
                         </View>
                     </View>
                 </View>

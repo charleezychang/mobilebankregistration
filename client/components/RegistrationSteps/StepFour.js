@@ -65,13 +65,13 @@ const StepTwo = ({ stepUpRegistration, stepDownRegistration, registrationStep, s
         else {
             setPasswordCheckLength(false)
         }
-        if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?])/.test(passwordToBeChecked)) {
+        if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?()])/.test(passwordToBeChecked)) {
             setPasswordCheckCharacter(true)
         }
         else {
             setPasswordCheckCharacter(false)
         }
-        if (passwordToBeChecked.length >= 8 && /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?])/.test(passwordToBeChecked)) {
+        if (passwordToBeChecked.length >= 8 && /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?()])/.test(passwordToBeChecked)) {
             return true
         }
         else {
