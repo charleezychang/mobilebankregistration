@@ -102,7 +102,7 @@ const LoginModal = (props) => {
                 <BlurCirclesBg />
                 {/* Company Logo */}
                 <View className='h-[40%] flex-row justify-center items-end'>
-                    <Image source={require('../assets/splash.png')} className='h-[50%] mb-4' resizeMode='contain' />
+                    <Image source={require('../assets/bank-logo.png')} className='h-[50%] mb-4' resizeMode='contain' />
                 </View>
                 {/* Prompt to Login or Register */}
                 <View className={`h-[60%] flex-column`}>

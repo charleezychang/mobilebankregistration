@@ -13,59 +13,59 @@ const CardsScreen = () => {
     const initialScrollWidth = (1248 - width - 312) / 2
     const [cardList, setCardList] = useState([
         {
-            bg: require('../assets/BG1.png'),
+            bg: require('../assets/CardsTab_Images/BG1.png'),
             title: "Main Card",
             number: "4123 1232 1231 1231",
             expiry: "05 / 25",
             currency: "€",
             amount: "4351.31",
-            digital: require('../assets/applepay.png'),
+            digital: require('../assets/CardsTab_Images/applepay.png'),
             touch: true,
-            card: require('../assets/visa.png'),
+            card: require('../assets/CardsTab_Images/visa.png'),
         },
         {
-            bg: require('../assets/BG2.png'),
+            bg: require('../assets/CardsTab_Images/BG2.png'),
             title: "Europe Travel",
             number: "4553 1232 1231 1231",
             expiry: "06 / 25",
             currency: "₱",
             amount: "24351.31",
-            digital: require('../assets/googleplay.png'),
+            digital: require('../assets/CardsTab_Images/googleplay.png'),
             touch: true,
-            card: require('../assets/mastercard.png'),
+            card: require('../assets/CardsTab_Images/mastercard.png'),
         },
         {
-            bg: require('../assets/BG3.png'),
+            bg: require('../assets/CardsTab_Images/BG3.png'),
             title: "Europe Travel",
             number: "4553 1632 1231 1231",
             expiry: "06 / 25",
             currency: "₱",
             amount: "24351.31",
-            digital: require('../assets/googleplay.png'),
+            digital: require('../assets/CardsTab_Images/googleplay.png'),
             touch: true,
-            card: require('../assets/mastercard.png'),
+            card: require('../assets/CardsTab_Images/mastercard.png'),
         },
         {
-            bg: require('../assets/BG1.png'),
+            bg: require('../assets/CardsTab_Images/BG1.png'),
             title: "Europe Travel",
             number: "4553 1692 1231 1231",
             expiry: "06 / 25",
             currency: "₱",
             amount: "24351.31",
-            digital: require('../assets/googleplay.png'),
+            digital: require('../assets/CardsTab_Images/googleplay.png'),
             touch: true,
-            card: require('../assets/mastercard.png'),
+            card: require('../assets/CardsTab_Images/mastercard.png'),
         },
         {
-            bg: require('../assets/BG1.png'),
+            bg: require('../assets/CardsTab_Images/BG1.png'),
             title: "Europe Travel",
             number: "4553 1692 1231 2231",
             expiry: "06 / 25",
             currency: "₱",
             amount: "24351.31",
-            digital: require('../assets/googleplay.png'),
+            digital: require('../assets/CardsTab_Images/googleplay.png'),
             touch: true,
-            card: require('../assets/mastercard.png'),
+            card: require('../assets/CardsTab_Images/mastercard.png'),
         }
     ])
     
@@ -81,11 +81,11 @@ const CardsScreen = () => {
             {/* Header */}
             <View className="h-[10%] flex-row items-center p-5 justify-between">
                 <Pressable className="flex-row items-left" onPress={() => navigation.navigate('Home')}>
-                    <Image source={require('../assets/arrows.png')} className="h-6 w-6 p-3 rounded-full" />
+                    <Image source={require('../assets/CardsTab_Images/arrows.png')} className="h-6 w-6 p-3 rounded-full" />
                     <Text className="text-[#FFFFFF] text-2xl font-semibold ml-5">My cards</Text>
                 </Pressable>
                 <View>
-                    <Image source={require('../assets/addcard2.png')} className="h-6 w-6 p-5" />
+                    <Image source={require('../assets/CardsTab_Images/addcard2.png')} className="h-6 w-6 p-5" />
                 </View>
             </View>
             {/* Card Carousel */}
@@ -128,24 +128,24 @@ const CardsScreen = () => {
             <View className='h-[30%] flex-column items-center '>
                 <View className='flex-row w-[90%]'>
                     <CustomButtonWide title="Monthly limit" notif={false} min={3000} max={3400} />
-                    <CustomButton title="Change PIN" notif={true} source={require('../assets/changepin.png')} />
+                    <CustomButton title="Change PIN" notif={true} source={require('../assets/CardsTab_Images/changepin.png')} />
                 </View>
                 <View className='flex-row w-[90%]'>
-                    <CustomButton title="Freeze Card" notif={false} source={require('../assets/freeze.png')} />
-                    <CustomButton title="Customize" notif={false} source={require('../assets/customize.png')} />
-                    <CustomButton title="Manage" notif={false} source={require('../assets/settings.png')} />
+                    <CustomButton title="Freeze Card" notif={false} source={require('../assets/CardsTab_Images/freeze.png')} />
+                    <CustomButton title="Customize" notif={false} source={require('../assets/CardsTab_Images/customize.png')} />
+                    <CustomButton title="Manage" notif={false} source={require('../assets/CardsTab_Images/settings.png')} />
                 </View>
             </View>
             {/* History Trans */}
             <View style={styles.shadow} className='h-[10%] mt-3 flex-row space-x-4 rounded-t-3xl p-5 items-center'>
-                <Image source={require('../assets/chevronup.png')} />
+                <Image source={require('../assets/CardsTab_Images/chevronup.png')} />
                 <Text className='text-white text-2xl font-bold'>History transactions</Text>
             </View>
             {/* More Buttons */}
             <View className=' h-[15%] flex-row space-x-3 bg-[#484848] px-5 pt-1'>
-                <CustomButton2 notif={false} source={require('../assets/home.png')} startGradientColor={'#FFD60A'} endGradientColor={'#32D74B'} active={true}/>
-                <CustomButton2 notif={false} source={require('../assets/stats.png')} startGradientColor={'#ff9b2e'} endGradientColor={'#ff3760'} active={false}/>
-                <CustomButton2 notif={false} source={require('../assets/support.png')} startGradientColor={'#74c9fc'} endGradientColor={'#74c9fc'} active={false}/>
+                <CustomButton2 notif={false} source={require('../assets/CardsTab_Images/home.png')} startGradientColor={'#FFD60A'} endGradientColor={'#32D74B'} active={true}/>
+                <CustomButton2 notif={false} source={require('../assets/CardsTab_Images/stats.png')} startGradientColor={'#ff9b2e'} endGradientColor={'#ff3760'} active={false}/>
+                <CustomButton2 notif={false} source={require('../assets/CardsTab_Images/support.png')} startGradientColor={'#74c9fc'} endGradientColor={'#74c9fc'} active={false}/>
             </View>
         </View>
     )

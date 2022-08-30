@@ -158,7 +158,7 @@ const StepThree = ({ stepUpRegistration, stepDownRegistration, registrationStep,
                                 <View className=' h-[75px] w-[75px] mx-[21.5px] my-[8px] rounded-full transparent flex-row justify-center items-center'>
                                 </View> :
                                 <TouchableOpacity onPress={deleteNumberFromPin} className='h-[75px] w-[75px] mx-[21.5px] my-[8px] rounded-full bg-black flex-row justify-center items-center'>
-                                    <Image source={require('../../assets/backspacepin.png')} />
+                                    <Image source={require('../../assets/Registration_Images/backspacepin.png')} />
                                 </TouchableOpacity>}
                         </View>
                     </View>

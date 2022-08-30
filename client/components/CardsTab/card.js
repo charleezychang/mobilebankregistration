@@ -17,7 +17,7 @@ export default function Card(props) {
             <View className='flex-column justify-between'>
                 <View className='items-end'>
                     {props.digital && <Image source={props.digital}/>}
-                    {props.touch && <Image source={require('../../assets/touch.png')} className='mt-2' />}
+                    {props.touch && <Image source={require('../../assets/CardsTab_Images/touch.png')} className='mt-2' />}
                 </View>
                 <View className='items-end'>
                     <Image source={props.card} className='mt-2' />

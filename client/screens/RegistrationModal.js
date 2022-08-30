@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import NetInfo from "@react-native-community/netinfo";
 import { NewspaperIcon } from "react-native-heroicons/solid";
 import BlurCirclesBg from '../components/BlurCirclesBg'
-import ProgressBar from '../components/ProgressBar';
+import ProgressBar from '../components/RegistrationSteps/ProgressBar';
 import StepOne from '../components/RegistrationSteps/StepOne';
 import StepTwo from '../components/RegistrationSteps/StepTwo';
 import StepThree from '../components/RegistrationSteps/StepThree';

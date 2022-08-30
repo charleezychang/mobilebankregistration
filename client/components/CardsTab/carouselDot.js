@@ -4,7 +4,7 @@ import React from 'react'
 const carouselDot = (props) => {
     return (
         <View className='p-1'>
-            {props.active ? <Image source={require('../../assets/activedot.png')}/> : <Image source={require('../../assets/inactivedot.png')}/>}
+            {props.active ? <Image source={require('../../assets/CardsTab_Images/activedot.png')}/> : <Image source={require('../../assets/CardsTab_Images/inactivedot.png')}/>}
         </View>
     )
 }
