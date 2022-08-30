@@ -153,7 +153,7 @@ const StepSeven = ({ stepUpRegistration, stepDownRegistration, registrationStep,
                     setIsDebouncing(true)
                     checkInput('firstname', value)
                 }}
-                onEndEditing={event => checkInputNoDebounce('firstname', event.nativeEvent.text)}
+                // onEndEditing={event => checkInputNoDebounce('firstname', event.nativeEvent.text)}
                 style={{ fontFamily: "Poppins-Regular" }}
             />
             {firstName == '' && !isValidFirstName && <Text className='self-start text-red-500' style={{ fontFamily: "Poppins-Regular" }}>This is a required field.</Text>}
